@@ -1,4 +1,15 @@
 
+    create table `activity` (
+       `id` integer not null,
+        `version` integer not null,
+        `budget_amount` double precision,
+        `budget_currency` varchar(255),
+        `end` datetime(6),
+        `start` datetime(6),
+        `title` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `administrator` (
        `id` integer not null,
         `version` integer not null,
@@ -173,6 +184,26 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `round` (
+       `id` integer not null,
+        `version` integer not null,
+        `creation` datetime(6),
+        `description` varchar(255),
+        `information` varchar(255),
+        `kind` varchar(255),
+        `money_amount` double precision,
+        `money_currency` varchar(255),
+        `ticker` varchar(255),
+        `title` varchar(255),
+        `entrepreneur_id` integer not null,
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `round_activity` (
+       `round_id` integer not null,
+        `activities_id` integer not null
+    ) engine=InnoDB;
+
     create table `technology` (
        `id` integer not null,
         `version` integer not null,
@@ -219,6 +250,12 @@
 
     insert into `hibernate_sequence` values ( 1 );
 create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
+
+    alter table `round` 
+       add constraint UK_g4u8ufh14qv6lmr5mwiulyinh unique (`ticker`);
+
+    alter table `round_activity` 
+       add constraint UK_fg297v2illnmn78liojbvo8uf unique (`activities_id`);
 
     alter table `user_account` 
        add constraint UK_castjbvpeeus0r8lbpehiu0e4 unique (`username`);
@@ -272,3 +309,18 @@ create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
        add constraint FK_b1gwnjqm6ggy9yuiqm0o4rlmd 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
+
+    alter table `round` 
+       add constraint `FKh7pxn83gjcb886jg2lj5ipkj3` 
+       foreign key (`entrepreneur_id`) 
+       references `entrepreneur` (`id`);
+
+    alter table `round_activity` 
+       add constraint `FKga9gliko2illd0v1ydu99v59r` 
+       foreign key (`activities_id`) 
+       references `activity` (`id`);
+
+    alter table `round_activity` 
+       add constraint `FKsso71v2s18qp9tbrcdxf3n8hv` 
+       foreign key (`round_id`) 
+       references `round` (`id`);
