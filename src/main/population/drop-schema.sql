@@ -15,9 +15,25 @@
        drop 
        foreign key `FKmlx88rwhns1ceiyilf11mre2l`;
 
+    alter table `bookkeeper` 
+       drop 
+       foreign key FK_krvjp9eaqyapewl2igugbo9o8;
+
     alter table `consumer` 
        drop 
        foreign key FK_6cyha9f1wpj0dpbxrrjddrqed;
+
+    alter table `entrepreneur` 
+       drop 
+       foreign key FK_r6tqltqvrlh1cyy8rsj5pev1q;
+
+    alter table `investor` 
+       drop 
+       foreign key FK_dcek5rr514s3rww0yy57vvnpq;
+
+    alter table `patron` 
+       drop 
+       foreign key FK_8xx5nujhuio3advxc2freyu65;
 
     alter table `provider` 
        drop 
@@ -31,6 +47,8 @@
 
     drop table if exists `banner`;
 
+    drop table if exists `bookkeeper`;
+
     drop table if exists `botia_bulletin`;
 
     drop table if exists `card`;
@@ -41,11 +59,17 @@
 
     drop table if exists `customization`;
 
+    drop table if exists `entrepreneur`;
+
     drop table if exists `inquiry`;
+
+    drop table if exists `investor`;
 
     drop table if exists `notice`;
 
     drop table if exists `overture`;
+
+    drop table if exists `patron`;
 
     drop table if exists `provider`;
 

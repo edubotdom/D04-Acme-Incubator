@@ -17,6 +17,16 @@
 
 	<import resource="conversion-service.xml" />
 
+
+	<!-- Cards' beans -->
+	<bean id="card01" class="acme.entities.cards.Card">
+		<property name="holder" value="Holder 01" />
+		<property name="number" value="5279970201047963" />
+		<property name="brand" value="Brand 01" />
+		<property name="cvv" value="123" />
+	</bean>
+
+
 	<!-- Authenticated Users -->
 
 	<bean name="authenticated1UserAccount" class="acme.framework.entities.UserAccount">
@@ -42,6 +52,132 @@
 		<property name="userAccount" ref="authenticated1UserAccount" />
 	</bean>
 	
+<!-- Entrepreneur -->
+	<bean name="entrepeneur1UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="entrepeneur1" />
+		<property name="password" value="entrepeneur1" />
+		<property name="enabled" value="true" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Entrepeneur" />
+				<property name="surname" value="One" />
+				<property name="email" value="entrepeneur1@acme.com" />
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="entrepeneur1" />
+				<ref bean="entrepeneur1Authenticated" />
+			</list>
+		</property>
+	</bean>
+
+
+	<bean name="entrepeneur1" class="acme.entities.roles.Entrepreneur">
+		<property name="startup" value="Startup" />
+		<property name="sector" value="Technology" />
+		<property name="qualification" value="Qualification record sample 1" />
+		<property name="skills" value="Skill1" />		
+		<property name="userAccount" ref="entrepeneur1UserAccount" />
+	</bean>
+
+	<bean name="entrepeneur1Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="entrepeneur1UserAccount" />
+	</bean>
+
+<!-- Investor -->
+	<bean name="investor1UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="investor1" />
+		<property name="password" value="investor1" />
+		<property name="enabled" value="true" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Investor" />
+				<property name="surname" value="One" />
+				<property name="email" value="investor1@acme.com" />
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="investor1" />
+				<ref bean="investor1Authenticated" />
+			</list>
+		</property>
+	</bean>
+
+
+	<bean name="investor1" class="acme.entities.roles.Investor">
+		<property name="firm" value="Firm 1" />
+		<property name="sector" value="Technology" />
+		<property name="profile" value="Profile 1" />
+		<property name="userAccount" ref="investor1UserAccount" />
+	</bean>
+
+	<bean name="investor1Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="investor1UserAccount" />
+	</bean>
+
+<!-- Bookkeeper -->
+	<bean name="bookkeeper1UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="bookkeeper1" />
+		<property name="password" value="bookkeeper1" />
+		<property name="enabled" value="true" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Bookkeeper" />
+				<property name="surname" value="One" />
+				<property name="email" value="bookkeeper1@acme.com" />
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="bookkeeper1" />
+				<ref bean="bookkeeper1Authenticated" />
+			</list>
+		</property>
+	</bean>
+
+
+	<bean name="bookkeeper1" class="acme.entities.roles.Bookkeeper">
+		<property name="firm" value="Firm 1" />
+		<property name="responsibility" value="This is a sample responsibility statement." />
+		<property name="userAccount" ref="bookkeeper1UserAccount" />
+	</bean>
+
+	<bean name="bookkeeper1Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="bookkeeper1UserAccount" />
+	</bean>
+	
+<!-- Patron -->
+	<bean name="patron1UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="patron1" />
+		<property name="password" value="patron1" />
+		<property name="enabled" value="true" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Patron" />
+				<property name="surname" value="One" />
+				<property name="email" value="patron1@acme.com" />
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="patron1" />
+				<ref bean="patron1Authenticated" />
+			</list>
+		</property>
+	</bean>
+
+
+	<bean name="patron1" class="acme.entities.roles.Patron">
+		<property name="organisation" value="Firm 1" />
+		<property name="card" ref="card01" />
+		<property name="userAccount" ref="patron1UserAccount" />
+	</bean>
+
+	<bean name="patron1Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="patron1UserAccount" />
+	</bean>	
 	
 <!-- BOTIABULLETIN'S BEANS-->
 	<bean id="botiaBulletin01" class="acme.entities.botia_bulletins.Botia_bulletin">
@@ -367,14 +503,6 @@
 		<property name="averageReward" value="5€" />
 		<property name="rookieGoal" value="Dab to yourself" />
 		<property name="rookieReward" value="1€" />
-	</bean>
-
-	<!-- Cards' beans -->
-	<bean id="card01" class="acme.entities.cards.Card">
-		<property name="holder" value="Holder 01" />
-		<property name="number" value="5279970201047963" />
-		<property name="brand" value="Brand 01" />
-		<property name="cvv" value="123" />
 	</bean>
 
 	<!-- Banners' beans -->
