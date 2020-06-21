@@ -30,6 +30,15 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `bookkeeper` (
+       `id` integer not null,
+        `version` integer not null,
+        `user_account_id` integer,
+        `firm` varchar(255),
+        `responsibility` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `botia_bulletin` (
        `id` integer not null,
         `version` integer not null,
@@ -87,6 +96,17 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `entrepreneur` (
+       `id` integer not null,
+        `version` integer not null,
+        `user_account_id` integer,
+        `qualification` varchar(255),
+        `sector` varchar(255),
+        `skills` varchar(255),
+        `startup` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `inquiry` (
        `id` integer not null,
         `version` integer not null,
@@ -97,6 +117,16 @@
         `money_amount` double precision,
         `money_currency` varchar(255),
         `title` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `investor` (
+       `id` integer not null,
+        `version` integer not null,
+        `user_account_id` integer,
+        `firm` varchar(255),
+        `profile` varchar(255),
+        `sector` varchar(255),
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -122,6 +152,15 @@
         `money_amount` double precision,
         `money_currency` varchar(255),
         `title` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `patron` (
+       `id` integer not null,
+        `version` integer not null,
+        `user_account_id` integer,
+        `card` tinyblob,
+        `organisation` varchar(255),
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -204,8 +243,28 @@ create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
        foreign key (`card_id`) 
        references `card` (`id`);
 
+    alter table `bookkeeper` 
+       add constraint FK_krvjp9eaqyapewl2igugbo9o8 
+       foreign key (`user_account_id`) 
+       references `user_account` (`id`);
+
     alter table `consumer` 
        add constraint FK_6cyha9f1wpj0dpbxrrjddrqed 
+       foreign key (`user_account_id`) 
+       references `user_account` (`id`);
+
+    alter table `entrepreneur` 
+       add constraint FK_r6tqltqvrlh1cyy8rsj5pev1q 
+       foreign key (`user_account_id`) 
+       references `user_account` (`id`);
+
+    alter table `investor` 
+       add constraint FK_dcek5rr514s3rww0yy57vvnpq 
+       foreign key (`user_account_id`) 
+       references `user_account` (`id`);
+
+    alter table `patron` 
+       add constraint FK_8xx5nujhuio3advxc2freyu65 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
 
