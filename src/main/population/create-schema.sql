@@ -24,6 +24,18 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `application` (
+       `id` integer not null,
+        `version` integer not null,
+        `creation` datetime(6),
+        `offer_amount` double precision,
+        `offer_currency` varchar(255),
+        `statement` varchar(255),
+        `ticker` varchar(255),
+        `round_id` integer,
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `authenticated` (
        `id` integer not null,
         `version` integer not null,
@@ -249,6 +261,9 @@
     ) engine=InnoDB;
 
     insert into `hibernate_sequence` values ( 1 );
+
+    alter table `application` 
+       add constraint UK_ao7wxw7e7mkj6g5q49yq2fw8d unique (`ticker`);
 create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
 
     alter table `round` 
@@ -269,6 +284,11 @@ create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
        add constraint FK_6lnbc6fo3om54vugoh8icg78m 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
+
+    alter table `application` 
+       add constraint `FKfy0uxra0jva9ng1ff14quuxnn` 
+       foreign key (`round_id`) 
+       references `round` (`id`);
 
     alter table `authenticated` 
        add constraint FK_h52w0f3wjoi68b63wv9vwon57 

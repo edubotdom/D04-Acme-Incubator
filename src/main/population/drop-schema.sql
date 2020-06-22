@@ -7,6 +7,10 @@
        drop 
        foreign key FK_6lnbc6fo3om54vugoh8icg78m;
 
+    alter table `application` 
+       drop 
+       foreign key `FKfy0uxra0jva9ng1ff14quuxnn`;
+
     alter table `authenticated` 
        drop 
        foreign key FK_h52w0f3wjoi68b63wv9vwon57;
@@ -56,6 +60,8 @@
     drop table if exists `administrator`;
 
     drop table if exists `anonymous`;
+
+    drop table if exists `application`;
 
     drop table if exists `authenticated`;
 

@@ -51,6 +51,7 @@ public class Round extends DomainEntity {
 	@NotBlank
 	private String					description;
 
+	@Valid
 	@NotNull
 	private Money					money;
 
