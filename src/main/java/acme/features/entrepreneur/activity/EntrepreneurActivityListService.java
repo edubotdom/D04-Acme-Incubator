@@ -57,7 +57,7 @@ public class EntrepreneurActivityListService implements AbstractListService<Entr
 
 		Integer id = request.getModel().getInteger("id");
 		Round round = this.repository.findRoundById(id);
-
+		round.getActivities().size();
 		return round.getActivities();
 	}
 }

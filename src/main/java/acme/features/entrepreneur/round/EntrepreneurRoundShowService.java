@@ -48,7 +48,7 @@ public class EntrepreneurRoundShowService implements AbstractShowService<Entrepr
 		String direccion = "../accounting/list?id=" + entity.getId();
 		model.setAttribute("accountingList", direccion);
 
-		String direccion2 = "../activity/list?id=" + entity.getId();
+		String direccion2 = "../activity/list_by_round?id=" + entity.getId();
 		model.setAttribute("roundListActivities", direccion2);
 
 		String direccion3 = "../activity/create?id=" + entity.getId();
@@ -71,7 +71,7 @@ public class EntrepreneurRoundShowService implements AbstractShowService<Entrepr
 		boolean budgetFullfilled = budgetSum >= entity.getMoney().getAmount();
 		model.setAttribute("budgetFulfilled", budgetFullfilled);
 
-		request.unbind(entity, model, "title", "start", "end", "budget");
+		request.unbind(entity, model, "ticker", "creation", "kind", "title", "description", "money", "information", "entrepreneur");
 	}
 
 	@Override

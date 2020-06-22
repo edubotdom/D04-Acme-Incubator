@@ -71,11 +71,11 @@ public class EntrepreneurRoundCreateService implements AbstractCreateService<Ent
 
 		Integer year = Calendar.getInstance().get(Calendar.YEAR);
 
-		if (entity.getKind() != null) {
+		if (entity.getKind() != null || !entity.getKind().isEmpty()) {
 			errors.state(request, entity.getKind().equals("SEED") || entity.getKind().equals("ANGEL") || entity.getKind().equals("SERIES-A") || entity.getKind().equals("SERIES-B") || entity.getKind().equals("SERIES-C") || entity.getKind().equals("BRIDGE"),
 				"kind", "entrepreneur.round.incorrectKind");
 		}
-		if (entity.getTicker() != null) {
+		if (entity.getTicker() != null || !entity.getTicker().isEmpty()) {
 			String shortYear = year.toString().substring(2);
 			errors.state(request, entity.getTicker().trim().split("-")[1].equals(shortYear), "ticker", "entrepreneur.round.incorrectYearOfTicker");
 		}
