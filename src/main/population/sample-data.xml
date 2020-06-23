@@ -545,6 +545,7 @@
 		<property name="statement" value="Statement01" />
 		<property name="offer" value="35000€" />		
 		<property name="round" ref="round01"/>
+		<property name="investor" ref="investor1"/>
 	</bean>
 
 </beans>

@@ -8,8 +8,8 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-employer.application.list.label.ticker = Identificador de la aplicación:
-employer.application.list.label.creation = Fecha de creación:
+entrepreneur.application.list.label.ticker = Identificador de la aplicación:
+entrepreneur.application.list.label.creation = Fecha de creación:
 
 entrepreneur.application.form.label.ticker = Identificador de la aplicación:
 entrepreneur.application.form.label.roundTicker = Identificación de la ronda de inversión:
@@ -17,5 +17,6 @@ entrepreneur.application.form.label.roundCreator = Creador de la ronda de invers
 entrepreneur.application.form.label.creation = Fecha de creación:
 entrepreneur.application.form.label.statement = Declaración:
 entrepreneur.application.form.label.offer = Oferta monetaria de inversión:
+entrepreneur.application.form.label.investor = Inversor:
 
-employer.application.form.button.return = Return
+entrepreneur.application.form.button.return = Return

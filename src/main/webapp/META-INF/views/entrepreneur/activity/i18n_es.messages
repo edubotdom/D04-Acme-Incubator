@@ -15,6 +15,7 @@ entrepreneur.activity.form.label.budget = Presupuesto:
 
 entrepreneur.activity.endDateCantBeSoonerThanStart = No puede crear una actividad con fecha de expiración anterior a su creación.
 entrepreneur.activity.moneyQuantityExceeded = Los prespupuestos definidos para las actividades no pueden superar el presupuesto de la ronda de inversión.
+entrepreneur.activity.startDateMustBeFuture = La fecha de inicio debe estar en el futuro.
 
 entrepreneur.activity.form.button.return = Volver
 entrepreneur.activity.form.button.create = Crear

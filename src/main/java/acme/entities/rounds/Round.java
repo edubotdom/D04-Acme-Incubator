@@ -65,7 +65,6 @@ public class Round extends DomainEntity {
 	private Entrepreneur			entrepreneur;
 
 	//Work programme
-	@NotNull
 	@Valid
 	@OneToMany
 	private Collection<Activity>	activities;

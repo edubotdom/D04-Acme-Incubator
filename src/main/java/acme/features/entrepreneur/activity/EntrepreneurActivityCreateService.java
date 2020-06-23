@@ -2,6 +2,7 @@
 package acme.features.entrepreneur.activity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,7 +81,9 @@ public class EntrepreneurActivityCreateService implements AbstractCreateService<
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		if (entity.getStart() != null) {
+		if (entity.getStart() != null && entity.getEnd() != null) {
+			Date date = new Date();
+			errors.state(request, entity.getStart().compareTo(date) > 0, "start", "entrepreneur.activity.startDateMustBeFuture");
 			errors.state(request, entity.getEnd().compareTo(entity.getStart()) > 0, "end", "entrepreneur.activity.endDateCantBeSoonerThanStart");
 		}
 		if (entity.getBudget() != null) {

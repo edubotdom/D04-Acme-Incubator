@@ -75,7 +75,7 @@ public class EntrepreneurRoundCreateService implements AbstractCreateService<Ent
 			errors.state(request, entity.getKind().equals("SEED") || entity.getKind().equals("ANGEL") || entity.getKind().equals("SERIES-A") || entity.getKind().equals("SERIES-B") || entity.getKind().equals("SERIES-C") || entity.getKind().equals("BRIDGE"),
 				"kind", "entrepreneur.round.incorrectKind");
 		}
-		if (!entity.getTicker().isEmpty() || entity.getTicker().trim().split("-").length == 0) {
+		if (!entity.getTicker().isEmpty() && entity.getTicker().trim().split("-").length > 1) {
 			String shortYear = year.toString().substring(2);
 			String shortTickerYear = entity.getTicker().trim().split("-")[1];
 			errors.state(request, shortTickerYear.equals(shortYear), "ticker", "entrepreneur.round.incorrectYearOfTicker");

@@ -18,6 +18,7 @@
 <acme:form>
 		<acme:form-textbox code="entrepreneur.application.form.label.ticker" path="ticker" placeholder="EEEE-JJJJ:WWWW" readonly="true" />
 		<acme:form-textbox code="entrepreneur.application.form.label.roundTicker" path="roundTicker" readonly="true" />
+		<acme:form-textbox code="entrepreneur.application.form.label.investor" path="investor" readonly="true" />
 		<acme:form-textbox code="entrepreneur.application.form.label.roundCreator" path="roundCreator" readonly="true" />		
 		<acme:form-moment code="entrepreneur.application.form.label.creation" path="creation" readonly="true" />
 		<acme:form-textarea code="entrepreneur.application.form.label.statement" path="statement" readonly="true" />

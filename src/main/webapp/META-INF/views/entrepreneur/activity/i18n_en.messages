@@ -15,6 +15,7 @@ entrepreneur.activity.form.label.budget = Budget:
 
 entrepreneur.activity.endDateCantBeSoonerThanStart = End date must be after start date.
 entrepreneur.activity.moneyQuantityExceeded = Money quantity of all activities exceed maximum money set in Investment Round.
+entrepreneur.activity.startDateMustBeFuture = Start date must be in future.
 
 entrepreneur.activity.form.button.return = Return
 entrepreneur.activity.form.button.create = Create
