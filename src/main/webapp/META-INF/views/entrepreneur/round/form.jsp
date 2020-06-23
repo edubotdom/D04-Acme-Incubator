@@ -19,14 +19,14 @@ s not guaranteed for any particular
 <acme:form>
 
 	<acme:form-textbox code="entrepreneur.round.form.label.ticker" path="ticker" placeholder="SSS-YY-NNNNNN" />
-	<acme:form-moment code="entrepreneur.round.form.label.creation" path="creation"/>
+	<acme:form-moment code="entrepreneur.round.form.label.creation" path="creation" readonly="true"/>
 	<acme:form-textbox code="entrepreneur.round.form.label.title" path="title" />
 	<acme:form-textarea code="entrepreneur.round.form.label.description" path="description" />
 	<acme:form-double code="entrepreneur.round.form.label.money" path="money" />
 	<acme:form-textbox code="entrepreneur.round.form.label.information" path="information" />
 
 	<jstl:if test="${command == 'show'}">
-		<acme:form-textbox code="entrepreneur.round.form.label.kind" path="kind" />
+		<acme:form-textbox code="entrepreneur.round.form.label.kind" path="kind" readonly="true"/>
 	</jstl:if>
 	
 	<jstl:if test="${command == 'create'}">
