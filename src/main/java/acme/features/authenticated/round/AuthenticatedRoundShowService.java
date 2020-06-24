@@ -1,11 +1,13 @@
 
 package acme.features.authenticated.round;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.activities.Activity;
 import acme.entities.rounds.Round;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -27,11 +29,11 @@ public class AuthenticatedRoundShowService implements AbstractShowService<Authen
 
 		boolean result;
 		int roundId;
-		Round round;
+		Collection<Activity> activities;
 		Date date = new Date();
 		roundId = request.getModel().getInteger("id");
-		round = this.repository.findOneRoundById(roundId);
-		result = round.getActivities().stream().map(m -> m.getEnd()).anyMatch(f -> f.compareTo(date) > 0);
+		activities = this.repository.findManyActivitiesByRound(roundId);
+		result = activities.stream().map(m -> m.getEnd()).anyMatch(f -> f.compareTo(date) > 0);
 
 		return result;
 	}
@@ -60,7 +62,6 @@ public class AuthenticatedRoundShowService implements AbstractShowService<Authen
 
 		id = request.getModel().getInteger("id");
 		result = this.repository.findOneRoundById(id);
-		result.getActivities().size();
 
 		return result;
 	}

@@ -1,4 +1,8 @@
 
+    alter table `activity` 
+       drop 
+       foreign key `FKcefbp3x1hxhgvlnk4n83y3o0o`;
+
     alter table `administrator` 
        drop 
        foreign key FK_2a5vcjo3stlfcwadosjfq49l1;
@@ -51,14 +55,6 @@
        drop 
        foreign key `FKh7pxn83gjcb886jg2lj5ipkj3`;
 
-    alter table `round_activity` 
-       drop 
-       foreign key `FKga9gliko2illd0v1ydu99v59r`;
-
-    alter table `round_activity` 
-       drop 
-       foreign key `FKsso71v2s18qp9tbrcdxf3n8hv`;
-
     drop table if exists `activity`;
 
     drop table if exists `administrator`;
@@ -98,8 +94,6 @@
     drop table if exists `provider`;
 
     drop table if exists `round`;
-
-    drop table if exists `round_activity`;
 
     drop table if exists `technology`;
 

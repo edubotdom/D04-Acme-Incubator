@@ -17,7 +17,7 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.entities.applications.Application;
+import acme.entities.activities.Activity;
 import acme.entities.roles.Entrepreneur;
 import acme.entities.rounds.Round;
 import acme.framework.repositories.AbstractRepository;
@@ -31,10 +31,10 @@ public interface EntrepreneurRoundRepository extends AbstractRepository {
 	@Query("select j from Round j where j.entrepreneur.id = ?1")
 	Collection<Round> findManyByEntrepreneurId(int entrepreneurId);
 
-	@Query("select a from Application a where a.round.id= ?1")
-	Collection<Application> findApplicationsByJob(int roundId);
-
 	@Query("select e from Entrepreneur e where e.userAccount.id= ?1")
 	Entrepreneur findOneEntrepreneurByUserAccountId(int entrepreneurId);
+
+	@Query("select d from Activity d where d.round.id = ?1")
+	Collection<Activity> findManyActivitiesByRound(int id);
 
 }

@@ -23,6 +23,7 @@ public class EntrepreneurActivityCreateService implements AbstractCreateService<
 
 	@Autowired
 	EntrepreneurActivityRepository	repository;
+	@Autowired
 	EntrepreneurRoundRepository		roundRepository;
 
 
@@ -73,6 +74,7 @@ public class EntrepreneurActivityCreateService implements AbstractCreateService<
 		Activity result;
 
 		result = new Activity();
+		result.setRound(this.repository.findOneRoundById(request.getModel().getInteger("id")));
 		return result;
 	}
 
@@ -89,7 +91,7 @@ public class EntrepreneurActivityCreateService implements AbstractCreateService<
 		if (entity.getBudget() != null) {
 			Integer roundId = request.getModel().getInteger("id");
 			Round round = this.repository.findOneRoundById(roundId);
-			List<Activity> actividades = new ArrayList<>(round.getActivities());
+			List<Activity> actividades = new ArrayList<>(this.repository.findManyByRound(roundId));
 			actividades.add(entity);
 			double suma = actividades.stream().mapToDouble(m -> m.getBudget().getAmount()).sum();
 			errors.state(request, suma <= round.getMoney().getAmount(), "budget", "entrepreneur.activity.moneyQuantityExceeded");
@@ -101,13 +103,8 @@ public class EntrepreneurActivityCreateService implements AbstractCreateService<
 		assert request != null;
 		assert entity != null;
 
-		Integer roundId = request.getModel().getInteger("id");
-		Round round = this.repository.findOneRoundById(roundId);
-		List<Activity> actividades = new ArrayList<>(round.getActivities());
-		actividades.add(entity);
-		round.setActivities(actividades);
+		entity.setRound(this.repository.findOneRoundById(request.getModel().getInteger("id")));
 
-		this.roundRepository.save(round);
 		this.repository.save(entity);
 	}
 

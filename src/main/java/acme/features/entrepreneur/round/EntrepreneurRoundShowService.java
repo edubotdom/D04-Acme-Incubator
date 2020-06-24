@@ -67,7 +67,7 @@ public class EntrepreneurRoundShowService implements AbstractShowService<Entrepr
 		iAmPrincipal = entrepreneur.getUserAccount().getId() == principal.getAccountId();
 		model.setAttribute("iAmPrincipal", iAmPrincipal);
 
-		Double budgetSum = entity.getActivities().stream().map(b -> b.getBudget()).mapToDouble(m -> m.getAmount()).sum();
+		Double budgetSum = this.repository.findManyActivitiesByRound(roundId).stream().map(b -> b.getBudget()).mapToDouble(m -> m.getAmount()).sum();
 		boolean budgetFullfilled = budgetSum >= entity.getMoney().getAmount();
 		model.setAttribute("budgetFulfilled", budgetFullfilled);
 
@@ -83,7 +83,6 @@ public class EntrepreneurRoundShowService implements AbstractShowService<Entrepr
 
 		id = request.getModel().getInteger("id");
 		result = this.repository.findOneRoundById(id);
-		result.getActivities().size();
 
 		return result;
 	}

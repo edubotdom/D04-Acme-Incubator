@@ -1,11 +1,13 @@
 
 package acme.features.investor.round;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.activities.Activity;
 import acme.entities.roles.Investor;
 import acme.entities.rounds.Round;
 import acme.framework.components.Model;
@@ -27,11 +29,11 @@ public class InvestorRoundShowService implements AbstractShowService<Investor, R
 
 		boolean result;
 		int roundId;
-		Round round;
+		Collection<Activity> activities;
 		Date date = new Date();
 		roundId = request.getModel().getInteger("id");
-		round = this.repository.findOneRoundById(roundId);
-		result = round.getActivities().stream().map(m -> m.getEnd()).anyMatch(f -> f.compareTo(date) > 0);
+		activities = this.repository.findManyActivitiesByRound(roundId);
+		result = activities.stream().map(m -> m.getEnd()).anyMatch(f -> f.compareTo(date) > 0);
 
 		return result;
 	}
@@ -48,6 +50,9 @@ public class InvestorRoundShowService implements AbstractShowService<Investor, R
 		String direccion2 = "../activity/list_by_round?id=" + entity.getId();
 		model.setAttribute("roundListActivities", direccion2);
 
+		String createApplication = "../application/create?id=" + request.getModel().getInteger("id");
+		model.setAttribute("createApplication", createApplication);
+
 		request.unbind(entity, model, "ticker", "creation", "kind", "title", "description", "money", "information", "entrepreneur");
 	}
 
@@ -60,7 +65,6 @@ public class InvestorRoundShowService implements AbstractShowService<Investor, R
 
 		id = request.getModel().getInteger("id");
 		result = this.repository.findOneRoundById(id);
-		result.getActivities().size();
 
 		return result;
 	}

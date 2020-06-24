@@ -59,7 +59,6 @@ public class EntrepreneurRoundCreateService implements AbstractCreateService<Ent
 		result = new Round();
 		result.setEntrepreneur(entrepreneur);
 		result.setCreation(date);
-
 		return result;
 	}
 

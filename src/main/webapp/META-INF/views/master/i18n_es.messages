@@ -82,9 +82,9 @@ master.menu.investor.listApplications = Listar mis aplicaciones a rondas de inve
 # master.menu.entrepreneur ####################################################
 
 master.menu.entrepreneur = Emprendedor
-master.menu.investor.listRounds = Listar mis rondas de inversión
-master.menu.investor.createRound = Crear nueva ronda de inversión
-master.menu.investor.listApplications = Listar aplicaciones a mis rondas de inversión
+master.menu.entrepreneur.listRounds = Listar mis rondas de inversión
+master.menu.entrepreneur.createRound = Crear nueva ronda de inversión
+master.menu.entrepreneur.listApplications = Listar aplicaciones a mis rondas de inversión
 
 # master.menu.authenticated ###################################################
 

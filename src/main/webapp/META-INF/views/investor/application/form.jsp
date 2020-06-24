@@ -16,14 +16,19 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <acme:form>
-		<acme:form-textbox code="investor.application.form.label.ticker" path="ticker" placeholder="EEEE-JJJJ:WWWW" readonly="true" />
+		<acme:form-textbox code="investor.application.form.label.ticker" path="ticker" placeholder="SSS-YY-NNNNNN"/>
+		<jstl:if test="${command == 'show'}">
 		<acme:form-textbox code="investor.application.form.label.roundTicker" path="roundTicker" readonly="true" />
 		<acme:form-textbox code="investor.application.form.label.investor" path="investor" readonly="true" />
-		<acme:form-textbox code="investor.application.form.label.roundCreator" path="roundCreator" readonly="true" />		
-		<acme:form-moment code="investor.application.form.label.creation" path="creation" readonly="true" />
-		<acme:form-textarea code="investor.application.form.label.statement" path="statement" readonly="true" />
+		<acme:form-textbox code="investor.application.form.label.roundCreator" path="roundCreator" readonly="true" />
+		<acme:form-moment code="investor.application.form.label.creation" path="creation"/>
+		</jstl:if>		
+		<acme:form-textarea code="investor.application.form.label.statement" path="statement"/>
 		<acme:form-money code="investor.application.form.label.offer" path="offer" />
 
+	<acme:form-hidden path="direccionApplication"/>
+
+	<acme:form-submit test="${command == 'create'}" code="investor.application.form.button.create" action="${direccionApplication}" />
 	<acme:form-return code="investor.application.form.button.return" />
 
 </acme:form>

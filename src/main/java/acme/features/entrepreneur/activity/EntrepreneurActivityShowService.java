@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.activities.Activity;
 import acme.entities.roles.Entrepreneur;
-import acme.entities.rounds.Round;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Principal;
@@ -27,13 +26,13 @@ public class EntrepreneurActivityShowService implements AbstractShowService<Entr
 
 		boolean result;
 		int activityId;
-		Round round;
+		Activity activity;
 		Entrepreneur entrepreneur;
 		Principal principal;
 
 		activityId = request.getModel().getInteger("id");
-		round = this.repository.findRoundByActivity(activityId);
-		entrepreneur = round.getEntrepreneur();
+		activity = this.repository.findOneById(activityId);
+		entrepreneur = activity.getRound().getEntrepreneur();
 		principal = request.getPrincipal();
 		result = entrepreneur.getUserAccount().getId() == principal.getAccountId();
 
@@ -45,20 +44,7 @@ public class EntrepreneurActivityShowService implements AbstractShowService<Entr
 		assert request != null;
 		assert entity != null;
 		assert model != null;
-		/*
-		 * boolean iAmPrincipal;
-		 * int activityId;
-		 * Round round;
-		 * Entrepreneur entrepreneur;
-		 * Principal principal;
-		 * 
-		 * activityId = request.getModel().getInteger("id");
-		 * round = this.repository.findRoundByActivity(activityId);
-		 * entrepreneur = round.getEntrepreneur();
-		 * principal = request.getPrincipal();
-		 * iAmPrincipal = entrepreneur.getUserAccount().getId() == principal.getAccountId();
-		 * model.setAttribute("iAmPrincipal", iAmPrincipal);
-		 */
+
 		request.unbind(entity, model, "title", "start", "end", "budget");
 	}
 

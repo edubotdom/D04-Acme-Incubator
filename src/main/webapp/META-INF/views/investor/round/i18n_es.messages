@@ -22,6 +22,7 @@ investor.round.form.label.kind = Tipo de inversión
 
 investor.round.form.button.accountingList = Lista de contabilidades
 investor.round.form.button.activitiesList = Listar actividades
+investor.round.form.button.createApplication = Crear solicitud de inversión
 
 investor.round.form.button.create = Crear
 

@@ -1,13 +1,13 @@
 
 package acme.features.authenticated.activity;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.activities.Activity;
-import acme.entities.rounds.Round;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
@@ -28,12 +28,11 @@ public class AuthenticatedActivityShowService implements AbstractShowService<Aut
 
 		boolean result;
 		int roundId;
-		Round round;
+		Collection<Activity> activities;
 		Date date = new Date();
-		int activityId = request.getModel().getInteger("id");
-		roundId = this.repository.findRoundByActivity(activityId).getId();
-		round = this.repository.findOneRoundById(roundId);
-		result = round.getActivities().stream().map(m -> m.getEnd()).anyMatch(f -> f.compareTo(date) > 0);
+		roundId = request.getModel().getInteger("id");
+		activities = this.repository.findManyByRound(roundId);
+		result = activities.stream().map(m -> m.getEnd()).anyMatch(f -> f.compareTo(date) > 0);
 
 		return result;
 	}

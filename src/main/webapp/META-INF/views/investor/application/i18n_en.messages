@@ -19,4 +19,8 @@ investor.application.form.label.statement = Statement:
 investor.application.form.label.offer = Invesment money offer:
 investor.application.form.label.investor = Investor:
 
+investor.application.incorrectYearOfTicker = In it's second field, ticker must have last 2 digits of the year
+investor.application.incorrect-currency = Currency must be Euro (EUR or €)
+
 investor.application.form.button.return = Return
+investor.application.form.button.create = Create

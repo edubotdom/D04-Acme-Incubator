@@ -29,11 +29,11 @@ public class InvestorActivityListService implements AbstractListService<Investor
 
 		boolean result;
 		int roundId;
-		Round round;
+		Collection<Activity> activities;
 		Date date = new Date();
 		roundId = request.getModel().getInteger("id");
-		round = this.repository.findOneRoundById(roundId);
-		result = round.getActivities().stream().map(m -> m.getEnd()).anyMatch(f -> f.compareTo(date) > 0);
+		activities = this.repository.findManyByRound(roundId);
+		result = activities.stream().map(m -> m.getEnd()).anyMatch(f -> f.compareTo(date) > 0);
 
 		return result;
 	}
@@ -53,7 +53,7 @@ public class InvestorActivityListService implements AbstractListService<Investor
 
 		Integer id = request.getModel().getInteger("id");
 		Round round = this.repository.findRoundById(id);
-		round.getActivities().size();
-		return round.getActivities();
+
+		return this.repository.findManyByRound(round.getId());
 	}
 }

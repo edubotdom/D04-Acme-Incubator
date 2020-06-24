@@ -518,7 +518,8 @@
 		<property name="title" value="Activity 01" />
 		<property name="start" value="2020/12/10 17:00" />
 		<property name="end" value="2020/12/11 17:00" />
-		<property name="budget" value="30000€" />		
+		<property name="budget" value="30000€" />	
+		<property name="round" ref="round01"/>			
 	</bean>
 
 	<!-- Rounds' beans -->
@@ -531,11 +532,6 @@
 		<property name="money" value="30000€" />		
 		<property name="information" value="http://www.lsi.us.es/" />
 		<property name="entrepreneur" ref="entrepreneur1"/>
-		<property name="activities">
-			<list>
-				<ref bean="activity01" />
-			</list>
-		</property>	
 	</bean>
 	
 	<!-- Applications' beans -->

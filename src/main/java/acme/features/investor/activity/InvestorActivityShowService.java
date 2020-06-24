@@ -27,13 +27,13 @@ public class InvestorActivityShowService implements AbstractShowService<Investor
 		assert request != null;
 
 		boolean result;
-		int roundId;
+		Activity activity;
 		Round round;
 		Date date = new Date();
 		int activityId = request.getModel().getInteger("id");
-		roundId = this.repository.findRoundByActivity(activityId).getId();
-		round = this.repository.findOneRoundById(roundId);
-		result = round.getActivities().stream().map(m -> m.getEnd()).anyMatch(f -> f.compareTo(date) > 0);
+		activity = this.repository.findOneById(activityId);
+		round = activity.getRound();
+		result = this.repository.findManyByRound(round.getId()).stream().map(m -> m.getEnd()).anyMatch(f -> f.compareTo(date) > 0);
 
 		return result;
 	}

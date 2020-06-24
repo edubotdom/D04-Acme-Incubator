@@ -7,6 +7,7 @@
         `end` datetime(6),
         `start` datetime(6),
         `title` varchar(255),
+        `round_id` integer,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -212,11 +213,6 @@
         primary key (`id`)
     ) engine=InnoDB;
 
-    create table `round_activity` (
-       `round_id` integer not null,
-        `activities_id` integer not null
-    ) engine=InnoDB;
-
     create table `technology` (
        `id` integer not null,
         `version` integer not null,
@@ -270,11 +266,13 @@ create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
     alter table `round` 
        add constraint UK_g4u8ufh14qv6lmr5mwiulyinh unique (`ticker`);
 
-    alter table `round_activity` 
-       add constraint UK_fg297v2illnmn78liojbvo8uf unique (`activities_id`);
-
     alter table `user_account` 
        add constraint UK_castjbvpeeus0r8lbpehiu0e4 unique (`username`);
+
+    alter table `activity` 
+       add constraint `FKcefbp3x1hxhgvlnk4n83y3o0o` 
+       foreign key (`round_id`) 
+       references `round` (`id`);
 
     alter table `administrator` 
        add constraint FK_2a5vcjo3stlfcwadosjfq49l1 
@@ -340,13 +338,3 @@ create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
        add constraint `FKh7pxn83gjcb886jg2lj5ipkj3` 
        foreign key (`entrepreneur_id`) 
        references `entrepreneur` (`id`);
-
-    alter table `round_activity` 
-       add constraint `FKga9gliko2illd0v1ydu99v59r` 
-       foreign key (`activities_id`) 
-       references `activity` (`id`);
-
-    alter table `round_activity` 
-       add constraint `FKsso71v2s18qp9tbrcdxf3n8hv` 
-       foreign key (`round_id`) 
-       references `round` (`id`);

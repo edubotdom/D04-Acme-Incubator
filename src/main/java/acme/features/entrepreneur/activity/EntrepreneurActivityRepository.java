@@ -12,6 +12,8 @@
 
 package acme.features.entrepreneur.activity;
 
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -28,10 +30,10 @@ public interface EntrepreneurActivityRepository extends AbstractRepository {
 	@Query("select d from Round d where d.id = ?1")
 	Round findRoundById(int id);
 
-	@Query("select d from Round d join d.activities a where a.id = ?1")
-	Round findRoundByActivity(int id);
-
 	@Query("select j from Round j where j.id = ?1")
 	Round findOneRoundById(int id);
+
+	@Query("select d from Activity d where d.round.id = ?1")
+	Collection<Activity> findManyByRound(int id);
 
 }

@@ -22,6 +22,7 @@ investor.round.form.label.kind = Kind of the investment:
 
 investor.round.form.button.accountingList = Accounting list
 investor.round.form.button.activitiesList = List Activities
+investor.round.form.button.createApplication = Create an application
 
 investor.round.form.button.create = Create
 
