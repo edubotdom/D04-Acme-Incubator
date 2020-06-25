@@ -1,4 +1,16 @@
 
+    create table `accounting` (
+       `id` integer not null,
+        `version` integer not null,
+        `body` varchar(255),
+        `creation` datetime(6),
+        `status` bit not null,
+        `title` varchar(255),
+        `bookkeeper_id` integer,
+        `round_id` integer,
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `activity` (
        `id` integer not null,
         `version` integer not null,
@@ -268,6 +280,16 @@ create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
 
     alter table `user_account` 
        add constraint UK_castjbvpeeus0r8lbpehiu0e4 unique (`username`);
+
+    alter table `accounting` 
+       add constraint `FKbu8bswc3ri7c817ei4p8ijvge` 
+       foreign key (`bookkeeper_id`) 
+       references `bookkeeper` (`id`);
+
+    alter table `accounting` 
+       add constraint `FKe73agfvdtr8obvkm8rh994ep4` 
+       foreign key (`round_id`) 
+       references `round` (`id`);
 
     alter table `activity` 
        add constraint `FKcefbp3x1hxhgvlnk4n83y3o0o` 
