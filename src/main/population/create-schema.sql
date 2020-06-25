@@ -7,6 +7,7 @@
         `end` datetime(6),
         `start` datetime(6),
         `title` varchar(255),
+        `round_id` integer,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -21,6 +22,19 @@
        `id` integer not null,
         `version` integer not null,
         `user_account_id` integer,
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `application` (
+       `id` integer not null,
+        `version` integer not null,
+        `creation` datetime(6),
+        `offer_amount` double precision,
+        `offer_currency` varchar(255),
+        `statement` varchar(255),
+        `ticker` varchar(255),
+        `investor_id` integer not null,
+        `round_id` integer,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -199,11 +213,6 @@
         primary key (`id`)
     ) engine=InnoDB;
 
-    create table `round_activity` (
-       `round_id` integer not null,
-        `activities_id` integer not null
-    ) engine=InnoDB;
-
     create table `technology` (
        `id` integer not null,
         `version` integer not null,
@@ -249,16 +258,21 @@
     ) engine=InnoDB;
 
     insert into `hibernate_sequence` values ( 1 );
+
+    alter table `application` 
+       add constraint UK_ao7wxw7e7mkj6g5q49yq2fw8d unique (`ticker`);
 create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
 
     alter table `round` 
        add constraint UK_g4u8ufh14qv6lmr5mwiulyinh unique (`ticker`);
 
-    alter table `round_activity` 
-       add constraint UK_fg297v2illnmn78liojbvo8uf unique (`activities_id`);
-
     alter table `user_account` 
        add constraint UK_castjbvpeeus0r8lbpehiu0e4 unique (`username`);
+
+    alter table `activity` 
+       add constraint `FKcefbp3x1hxhgvlnk4n83y3o0o` 
+       foreign key (`round_id`) 
+       references `round` (`id`);
 
     alter table `administrator` 
        add constraint FK_2a5vcjo3stlfcwadosjfq49l1 
@@ -269,6 +283,16 @@ create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
        add constraint FK_6lnbc6fo3om54vugoh8icg78m 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
+
+    alter table `application` 
+       add constraint `FKl4fp0cd8c008ma79n6w58xhk9` 
+       foreign key (`investor_id`) 
+       references `investor` (`id`);
+
+    alter table `application` 
+       add constraint `FKfy0uxra0jva9ng1ff14quuxnn` 
+       foreign key (`round_id`) 
+       references `round` (`id`);
 
     alter table `authenticated` 
        add constraint FK_h52w0f3wjoi68b63wv9vwon57 
@@ -314,13 +338,3 @@ create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
        add constraint `FKh7pxn83gjcb886jg2lj5ipkj3` 
        foreign key (`entrepreneur_id`) 
        references `entrepreneur` (`id`);
-
-    alter table `round_activity` 
-       add constraint `FKga9gliko2illd0v1ydu99v59r` 
-       foreign key (`activities_id`) 
-       references `activity` (`id`);
-
-    alter table `round_activity` 
-       add constraint `FKsso71v2s18qp9tbrcdxf3n8hv` 
-       foreign key (`round_id`) 
-       references `round` (`id`);

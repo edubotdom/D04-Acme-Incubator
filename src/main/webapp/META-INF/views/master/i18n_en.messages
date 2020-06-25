@@ -73,6 +73,19 @@ master.menu.provider.favourite-link = Favourite link
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
+# master.menu.investor ########################################################
+
+master.menu.investor = Investor
+master.menu.investor.listRounds = List investment rounds
+master.menu.investor.listApplications = List my applications to investment rounds
+
+# master.menu.entrepreneur ####################################################
+
+master.menu.entrepreneur = Entrepreneur
+master.menu.entrepreneur.listRounds = List my investment rounds
+master.menu.entrepreneur.createRound = Create a new investment round
+master.menu.entrepreneur.listApplications = List applications to my investment rounds
+
 # master.menu.authenticated ###################################################
 
 master.menu.authenticated = Authenticated
@@ -87,6 +100,7 @@ master.menu.authenticated.listTool = List tools
 master.menu.authenticated.listToolBySector = List tools by sector
 master.menu.authenticated.listToolByStars = List tools by stars
 master.menu.authenticated.listChallenges = List challenges
+master.menu.authenticated.listRounds = List investment rounds
 
 # master.menu.user-account ####################################################
 

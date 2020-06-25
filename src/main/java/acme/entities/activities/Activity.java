@@ -4,10 +4,12 @@ package acme.entities.activities;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import acme.entities.rounds.Round;
 import acme.framework.datatypes.Money;
 import acme.framework.entities.DomainEntity;
 import lombok.Getter;
@@ -34,5 +36,9 @@ public class Activity extends DomainEntity {
 	@NotNull
 	@Valid
 	private Money				budget;
+
+	@Valid
+	@ManyToOne
+	private Round				round;
 
 }

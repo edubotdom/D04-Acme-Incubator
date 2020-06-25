@@ -77,6 +77,23 @@
 		</acme:menu-option>
 	</acme:menu-left>
 
+		<acme:menu-option code="master.menu.investor" access="hasRole('Investor')">
+			<!-- Investment rounds' links -->
+			<acme:menu-suboption code="master.menu.investor.listRounds" action="/investor/round/list"/>
+			<!-- Application to investment rounds' links -->
+			<acme:menu-suboption code="master.menu.investor.listApplications" action="/investor/application/list_mine"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.entrepreneur" access="hasRole('Entrepreneur')">
+			<!-- Investment rounds' links -->
+			<acme:menu-suboption code="master.menu.entrepreneur.listRounds" action="/entrepreneur/round/list_mine"/>
+			<acme:menu-suboption code="master.menu.entrepreneur.createRound" action="/entrepreneur/round/create"/>			
+			<!-- Application to investment rounds' links -->
+			<acme:menu-suboption code="master.menu.entrepreneur.listApplications" action="/entrepreneur/application/list_mine"/>
+
+		</acme:menu-option>
+		
+		
 		<acme:menu-option code="master.menu.authenticated" access="hasRole('Authenticated')">
 			<!-- Notice links -->
 			<acme:menu-suboption code="master.menu.authenticated.listNotice" action="/authenticated/notice/list"/>
@@ -95,7 +112,10 @@
 			<acme:menu-suboption code="master.menu.authenticated.listToolBySector" action="/authenticated/tool/list_by_sector"/>			
 			<acme:menu-suboption code="master.menu.authenticated.listToolByStars" action="/authenticated/tool/list_by_stars"/>
 			<!-- Challenges' links -->
-			<acme:menu-suboption code="master.menu.authenticated.listChallenges" action="/authenticated/challenge/list"/>	
+			<acme:menu-suboption code="master.menu.authenticated.listChallenges" action="/authenticated/challenge/list"/>
+			<!-- Investment rounds' links -->
+			<acme:menu-suboption code="master.menu.authenticated.listRounds" action="/authenticated/round/list"/>
+
 		</acme:menu-option>
 
 	<acme:menu-right>
