@@ -73,7 +73,7 @@ public class InvestorApplicationCreateService implements AbstractCreateService<I
 		int investorId = request.getPrincipal().getAccountId();
 		Investor investor = this.repository.findInvestorById(investorId);
 
-		Date date = new Date();
+		Date date = new Date(System.currentTimeMillis() - 1);
 
 		result = new Application();
 		result.setInvestor(investor);

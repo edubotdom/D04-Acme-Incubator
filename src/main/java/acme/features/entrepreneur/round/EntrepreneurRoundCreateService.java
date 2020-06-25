@@ -54,7 +54,7 @@ public class EntrepreneurRoundCreateService implements AbstractCreateService<Ent
 		int entrepreneurId = request.getPrincipal().getAccountId();
 		Entrepreneur entrepreneur = this.repository.findOneEntrepreneurByUserAccountId(entrepreneurId);
 
-		Date date = new Date();
+		Date date = new Date(System.currentTimeMillis() - 1);
 
 		result = new Round();
 		result.setEntrepreneur(entrepreneur);

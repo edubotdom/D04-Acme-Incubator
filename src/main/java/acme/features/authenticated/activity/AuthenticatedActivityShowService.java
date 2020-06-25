@@ -27,11 +27,12 @@ public class AuthenticatedActivityShowService implements AbstractShowService<Aut
 		assert request != null;
 
 		boolean result;
-		int roundId;
+		int activityId;
 		Collection<Activity> activities;
 		Date date = new Date();
-		roundId = request.getModel().getInteger("id");
-		activities = this.repository.findManyByRound(roundId);
+		activityId = request.getModel().getInteger("id");
+		Activity activity = this.repository.findOneById(activityId);
+		activities = this.repository.findManyByRound(activity.getRound().getId());
 		result = activities.stream().map(m -> m.getEnd()).anyMatch(f -> f.compareTo(date) > 0);
 
 		return result;
