@@ -86,6 +86,12 @@ master.menu.entrepreneur.listRounds = Listar mis rondas de inversión
 master.menu.entrepreneur.createRound = Crear nueva ronda de inversión
 master.menu.entrepreneur.listApplications = Listar aplicaciones a mis rondas de inversión
 
+# master.menu.bookkeeper ######################################################
+
+master.menu.bookkeeper = Contable
+master.menu.bookkeeper.listRoundsAccounted = Listar rondas contabilizadas
+master.menu.bookkeeper.listRoundsNotAccounted = Listar rondas no contabilizadas
+
 # master.menu.authenticated ###################################################
 
 master.menu.authenticated = Autenticado
