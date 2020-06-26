@@ -107,6 +107,7 @@ master.menu.authenticated.listToolBySector = List tools by sector
 master.menu.authenticated.listToolByStars = List tools by stars
 master.menu.authenticated.listChallenges = List challenges
 master.menu.authenticated.listRounds = List investment rounds
+master.menu.authenticated.listForums = List forums
 
 # master.menu.user-account ####################################################
 

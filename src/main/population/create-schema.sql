@@ -144,6 +144,13 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `forum` (
+       `id` integer not null,
+        `version` integer not null,
+        `round_id` integer not null,
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `inquiry` (
        `id` integer not null,
         `version` integer not null,
@@ -164,6 +171,18 @@
         `firm` varchar(255),
         `profile` varchar(255),
         `sector` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `message` (
+       `id` integer not null,
+        `version` integer not null,
+        `body` varchar(255),
+        `moment` datetime(6),
+        `tags` varchar(255),
+        `title` varchar(255),
+        `forum_id` integer not null,
+        `user_id` integer not null,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -275,6 +294,9 @@
        add constraint UK_ao7wxw7e7mkj6g5q49yq2fw8d unique (`ticker`);
 create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
 
+    alter table `forum` 
+       add constraint UK_q57nllj3lbejasd0yhaujdocg unique (`round_id`);
+
     alter table `round` 
        add constraint UK_g4u8ufh14qv6lmr5mwiulyinh unique (`ticker`);
 
@@ -341,10 +363,25 @@ create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
 
+    alter table `forum` 
+       add constraint `FKi060kpmt16oclfryca1rf6un8` 
+       foreign key (`round_id`) 
+       references `round` (`id`);
+
     alter table `investor` 
        add constraint FK_dcek5rr514s3rww0yy57vvnpq 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
+
+    alter table `message` 
+       add constraint `FKfwwpivgx5j4vw4594dgrw884q` 
+       foreign key (`forum_id`) 
+       references `forum` (`id`);
+
+    alter table `message` 
+       add constraint `FKik4epe9dp5q6uenarfyia7xin` 
+       foreign key (`user_id`) 
+       references `authenticated` (`id`);
 
     alter table `patron` 
        add constraint FK_8xx5nujhuio3advxc2freyu65 

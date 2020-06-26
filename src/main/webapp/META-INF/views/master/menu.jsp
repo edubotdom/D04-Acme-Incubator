@@ -122,6 +122,10 @@
 			<acme:menu-suboption code="master.menu.authenticated.listChallenges" action="/authenticated/challenge/list"/>
 			<!-- Investment rounds' links -->
 			<acme:menu-suboption code="master.menu.authenticated.listRounds" action="/authenticated/round/list"/>
+			
+			<!-- Forum' links -->
+			<acme:menu-suboption code="master.menu.authenticated.listForums" action="/authenticated/forum/list_mine"/>
+
 
 		</acme:menu-option>
 
