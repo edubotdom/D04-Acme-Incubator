@@ -544,4 +544,14 @@
 		<property name="investor" ref="investor1"/>
 	</bean>
 
+	<!-- Accountings' beans -->
+	<bean id="accounting01" class="acme.entities.accountings.Accounting">
+		<property name="title" value="Accounting record 01" />
+		<property name="creation" value="2019/12/10 16:00" />
+		<property name="status" value="true" />
+		<property name="body" value="Sample body of an accounting" />		
+		<property name="bookkeeper" ref="bookkeeper1"/>
+		<property name="round" ref="round01"/>
+	</bean>
+
 </beans>

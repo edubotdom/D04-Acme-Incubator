@@ -1,4 +1,12 @@
 
+    alter table `accounting` 
+       drop 
+       foreign key `FKbu8bswc3ri7c817ei4p8ijvge`;
+
+    alter table `accounting` 
+       drop 
+       foreign key `FKe73agfvdtr8obvkm8rh994ep4`;
+
     alter table `activity` 
        drop 
        foreign key `FKcefbp3x1hxhgvlnk4n83y3o0o`;
@@ -54,6 +62,8 @@
     alter table `round` 
        drop 
        foreign key `FKh7pxn83gjcb886jg2lj5ipkj3`;
+
+    drop table if exists `accounting`;
 
     drop table if exists `activity`;
 

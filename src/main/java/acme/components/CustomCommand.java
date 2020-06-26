@@ -15,6 +15,6 @@ package acme.components;
 import acme.framework.components.Command;
 
 public enum CustomCommand implements Command {
-	LIST_BY_SECTOR, LIST_BY_STARS, LIST_MINE, LIST_BY_ROUND
+	LIST_BY_SECTOR, LIST_BY_STARS, LIST_MINE, LIST_BY_ROUND, LIST_ACCOUNTED, LIST_NOT_ACCOUNTED
 
 }

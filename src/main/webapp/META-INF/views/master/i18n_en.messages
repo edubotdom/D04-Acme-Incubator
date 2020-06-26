@@ -86,6 +86,12 @@ master.menu.entrepreneur.listRounds = List my investment rounds
 master.menu.entrepreneur.createRound = Create a new investment round
 master.menu.entrepreneur.listApplications = List applications to my investment rounds
 
+# master.menu.bookkeeper ######################################################
+
+master.menu.bookkeeper = Bookkeeper
+master.menu.bookkeeper.listRoundsAccounted = List rounds accounted
+master.menu.bookkeeper.listRoundsNotAccounted = List rounds not accounted
+
 # master.menu.authenticated ###################################################
 
 master.menu.authenticated = Authenticated

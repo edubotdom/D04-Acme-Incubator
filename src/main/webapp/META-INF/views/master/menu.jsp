@@ -77,6 +77,13 @@
 		</acme:menu-option>
 	</acme:menu-left>
 
+		<acme:menu-option code="master.menu.bookkeeper" access="hasRole('Bookkeeper')">
+			<!-- Investment rounds' links -->
+			<acme:menu-suboption code="master.menu.bookkeeper.listRoundsAccounted" action="/bookkeeper/round/list_accounted"/>
+			<acme:menu-suboption code="master.menu.bookkeeper.listRoundsNotAccounted" action="/bookkeeper/round/list_not_accounted"/>
+
+		</acme:menu-option>
+
 		<acme:menu-option code="master.menu.investor" access="hasRole('Investor')">
 			<!-- Investment rounds' links -->
 			<acme:menu-suboption code="master.menu.investor.listRounds" action="/investor/round/list"/>
