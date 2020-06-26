@@ -554,4 +554,19 @@
 		<property name="round" ref="round01"/>
 	</bean>
 
+	<!-- Forum' beans -->
+	<bean id="forum01" class="acme.entities.forums.Forum">
+		<property name="round" ref="round01"/>
+	</bean>
+
+	<!-- Messages' beans -->
+	<bean id="message01" class="acme.entities.messages.Message">
+		<property name="title" value="title01"/>
+		<property name="moment" value="2019/12/10 16:00"/>
+		<property name="tags" value="#tagOne"/>
+		<property name="body" value="Body of a message."/>
+		<property name="user" ref="investor1Authenticated"/>
+		<property name="forum" ref="forum01"/>
+	</bean>
+
 </beans>

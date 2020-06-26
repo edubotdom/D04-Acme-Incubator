@@ -47,9 +47,21 @@
        drop 
        foreign key FK_r6tqltqvrlh1cyy8rsj5pev1q;
 
+    alter table `forum` 
+       drop 
+       foreign key `FKi060kpmt16oclfryca1rf6un8`;
+
     alter table `investor` 
        drop 
        foreign key FK_dcek5rr514s3rww0yy57vvnpq;
+
+    alter table `message` 
+       drop 
+       foreign key `FKfwwpivgx5j4vw4594dgrw884q`;
+
+    alter table `message` 
+       drop 
+       foreign key `FKik4epe9dp5q6uenarfyia7xin`;
 
     alter table `patron` 
        drop 
@@ -91,9 +103,13 @@
 
     drop table if exists `entrepreneur`;
 
+    drop table if exists `forum`;
+
     drop table if exists `inquiry`;
 
     drop table if exists `investor`;
+
+    drop table if exists `message`;
 
     drop table if exists `notice`;
 
