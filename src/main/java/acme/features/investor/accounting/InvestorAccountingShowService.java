@@ -23,6 +23,13 @@ public class InvestorAccountingShowService implements AbstractShowService<Invest
 	public boolean authorise(final Request<Accounting> request) {
 		assert request != null;
 
+		Integer idAccounting = request.getModel().getInteger("id");
+		if (idAccounting != null) {
+			Accounting accounting = this.repository.findOneAccountingById(idAccounting);
+
+			return accounting.isStatus();
+		}
+
 		return true;
 	}
 

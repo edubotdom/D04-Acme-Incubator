@@ -31,8 +31,8 @@ public interface BookkeeperAccountingRepository extends AbstractRepository {
 	@Query("select j from Accounting j where j.id = ?1")
 	Accounting findOneAccountingById(int id);
 
-	@Query("select a from Accounting a where a.round.id=?1")
-	Collection<Accounting> findManyAccountsByRound(int id);
+	@Query("select a from Accounting a where a.round.id=?1 and (a.status = 1 or a.bookkeeper.userAccount.id = ?2)")
+	Collection<Accounting> findManyAccountsByRound(int idRound, int idBookkeeper);
 
 	@Query("select b from Bookkeeper b where b.userAccount.id= ?1")
 	Bookkeeper findOneBookkeeperByUserAccountId(int entrepreneurId);

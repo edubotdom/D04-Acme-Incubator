@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.forums.Forum;
 import acme.entities.messages.Message;
+import acme.features.authenticated.forum.AuthenticatedForumRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -32,14 +33,24 @@ public class AuthenticatedMessageCreateService implements AbstractCreateService<
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedMessageRepository repository;
+	private AuthenticatedMessageRepository	repository;
 
+	@Autowired
+	private AuthenticatedForumRepository	forumRepository;
 	// AbstractCreateService<Authenticated, Message> ---------------------------
 
 
 	@Override
 	public boolean authorise(final Request<Message> request) {
 		assert request != null;
+
+		Integer forumId = request.getModel().getInteger("id");
+
+		if (forumId != null) {
+			Principal principal = request.getPrincipal();
+			boolean res = this.forumRepository.findManyForumsByUserId(principal.getAccountId()).stream().anyMatch(f -> f.getId() == forumId.intValue());
+			return res;
+		}
 
 		return true;
 	}

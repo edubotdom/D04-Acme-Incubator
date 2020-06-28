@@ -34,6 +34,7 @@ entrepreneur.round.form.button.create = Crear
 
 entrepreneur.round.form.button.return = Volver
 
-entrepreneur.round.incorrectKind = El tipo de inversión es incorrecto
+entrepreneur.round.incorrectKind = El tipo de inversión es incorrecto.
 entrepreneur.round.incorrectYearOfTicker = Fecha introducida en el identificador incorrecta, en el segundo campo deben introducirse los dos últimos dígitos del presente año.
-entrepreneur.round.incorrect-currency = La moneda debe ser Euro
+entrepreneur.round.incorrect-currency = La moneda debe ser Euro.
+entrepreneur.round.repeatedTicker = No puede repetir el identificador en distintas rondas de inversión.
