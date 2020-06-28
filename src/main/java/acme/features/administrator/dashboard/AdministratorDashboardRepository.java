@@ -50,7 +50,6 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("select min(ao.money.amount) from Overture ao where ao.deadline >= current_date()")
 	Double minimumOverture();
 
-	//@Query("select max((max_amount + min_amount)/2) from Acme_offer where deadline >= CURRENT_DATE")
 	@Query("select max(ao.money.amount) from Overture ao where ao.deadline >= current_date()")
 	Double maximumOverture();
 
@@ -78,4 +77,12 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("select 1.0 * count(a) from Tool a where a.source = 'closed-source'")
 	Double closedSourceRatioToolsRatio();
 
+	@Query("select avg(select count(r) from Round r where r.entrepreneur.id = e.id) from Entrepreneur e")
+	Double getAverageRoundsPerEntrepreneur();
+
+	@Query("select avg(select count(a) from Application a where exists(select r from Round r where r.entrepreneur.id = e.id and a.round.id = r.id)) from Entrepreneur e")
+	Double getAverageApplicationsPerEntrepreneur();
+
+	@Query("select avg(select count(a) from Application a where a.investor.id = i.id) from Investor i")
+	Double getAverageApplicationsPerInvestor();
 }

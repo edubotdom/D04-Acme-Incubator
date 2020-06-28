@@ -32,4 +32,9 @@ administrator.dashboard.form.label.maximumMoneyOvertures = Cantidad máxima mone
 administrator.dashboard.form.label.averageMoneyOvertures = Media de cantidades monetarias de propuestas:
 administrator.dashboard.form.label.standardDesviationMoneyOvertures = Desviación típica de cantidades monetarias de propuestas:
 
+administrator.dashboard.form.label.applicationsAndInvestmentRounds = Solicitudes de inversión y rondas de inversión
+administrator.dashboard.form.label.averageRoundsPerEntrepreneur = Número de rondas de inversiones por emprendedor:
+administrator.dashboard.form.label.averageApplicationsPerEntrepreneur = Número de solicitudes de inversión por emprendedor:
+administrator.dashboard.form.label.averageApplicationsPerInvestor = Número de solicitudes de inversión por inversor:
+
 administrator.dashboard.form.button.return = Volver

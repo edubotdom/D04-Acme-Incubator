@@ -32,6 +32,11 @@ public class Dashboard implements Serializable {
 	Double						averageMoneyOvertures;
 	Double						standardDesviationMoneyOvertures;
 
+	//Applications and investment rounds
+	Double						averageRoundsPerEntrepreneur;
+	Double						averageApplicationsPerEntrepreneur;
+	Double						averageApplicationsPerInvestor;
+
 	// Chart atts.
 	List<String>				technologySectors;
 	List<Long>					numberTechnologiesBySector;

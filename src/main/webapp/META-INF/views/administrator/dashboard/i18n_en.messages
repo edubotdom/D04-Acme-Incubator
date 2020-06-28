@@ -32,5 +32,9 @@ administrator.dashboard.form.label.maximumMoneyOvertures = Maximum offer of mone
 administrator.dashboard.form.label.averageMoneyOvertures = Average offer of money from Overtures:
 administrator.dashboard.form.label.standardDesviationMoneyOvertures = Standard desviation of money from Overtures:
 
+administrator.dashboard.form.label.applicationsAndInvestmentRounds = Applications and Investment Rounds 
+administrator.dashboard.form.label.averageRoundsPerEntrepreneur = Average investment rounds per entrepreneur:
+administrator.dashboard.form.label.averageApplicationsPerEntrepreneur = Average applications per entrepreneur:
+administrator.dashboard.form.label.averageApplicationsPerInvestor = Average applications per investor:
 
 administrator.dashboard.form.button.return = Return
