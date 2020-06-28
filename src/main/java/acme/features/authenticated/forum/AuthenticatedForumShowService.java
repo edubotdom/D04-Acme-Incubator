@@ -8,6 +8,7 @@ import acme.entities.forums.Forum;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
 
 @Service
@@ -23,6 +24,13 @@ public class AuthenticatedForumShowService implements AbstractShowService<Authen
 	public boolean authorise(final Request<Forum> request) {
 		assert request != null;
 
+		Integer id = request.getModel().getInteger("id");
+
+		if (id != null) {
+			Principal principal = request.getPrincipal();
+			boolean res = this.repository.findManyForumsByUserId(principal.getAccountId()).stream().anyMatch(f -> f.getId() == id.intValue());
+			return res;
+		}
 		return true;
 	}
 

@@ -37,3 +37,4 @@ entrepreneur.round.form.button.return = Return
 entrepreneur.round.incorrectKind = Kind of investment invalid.
 entrepreneur.round.incorrectYearOfTicker = Ticker format is not correct, as the 2 last numbers of the year must be typed in the second part.
 entrepreneur.round.incorrect-currency = Currency must be Euro.
+entrepreneur.round.repeatedTicker = Ticker identification must be unique.

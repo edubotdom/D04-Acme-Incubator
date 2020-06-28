@@ -37,4 +37,7 @@ public interface EntrepreneurRoundRepository extends AbstractRepository {
 	@Query("select d from Activity d where d.round.id = ?1")
 	Collection<Activity> findManyActivitiesByRound(int id);
 
+	@Query("select j from Round j where j.ticker = ?1")
+	Round findOneRoundByTicker(String ticker);
+
 }

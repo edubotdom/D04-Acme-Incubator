@@ -7,8 +7,10 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.forums.Forum;
 import acme.entities.roles.Entrepreneur;
 import acme.entities.rounds.Round;
+import acme.features.authenticated.forum.AuthenticatedForumRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -18,7 +20,10 @@ import acme.framework.services.AbstractCreateService;
 public class EntrepreneurRoundCreateService implements AbstractCreateService<Entrepreneur, Round> {
 
 	@Autowired
-	EntrepreneurRoundRepository repository;
+	EntrepreneurRoundRepository		repository;
+
+	@Autowired
+	AuthenticatedForumRepository	forumRepository;
 
 
 	@Override
@@ -70,6 +75,11 @@ public class EntrepreneurRoundCreateService implements AbstractCreateService<Ent
 
 		Integer year = Calendar.getInstance().get(Calendar.YEAR);
 
+		if (!entity.getTicker().isEmpty()) {
+			Round sameTicker = this.repository.findOneRoundByTicker(entity.getTicker());
+			errors.state(request, sameTicker == null, "ticker", "entrepreneur.round.repeatedTicker");
+		}
+
 		if (!entity.getKind().isEmpty()) {
 			errors.state(request, entity.getKind().equals("SEED") || entity.getKind().equals("ANGEL") || entity.getKind().equals("SERIES-A") || entity.getKind().equals("SERIES-B") || entity.getKind().equals("SERIES-C") || entity.getKind().equals("BRIDGE"),
 				"kind", "entrepreneur.round.incorrectKind");
@@ -90,7 +100,11 @@ public class EntrepreneurRoundCreateService implements AbstractCreateService<Ent
 		assert request != null;
 		assert entity != null;
 
-		this.repository.save(entity);
+		Round round = this.repository.save(entity);
+
+		Forum forum = new Forum();
+		forum.setRound(round);
+		this.forumRepository.save(forum);
 	}
 
 }
