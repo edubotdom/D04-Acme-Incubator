@@ -44,6 +44,10 @@ public class Application extends DomainEntity {
 	@NotNull
 	private Money				offer;
 
+	@Pattern(regexp = "^(accepted|published|rejected)$")
+	@NotBlank
+	private String				status;
+
 	//Relaciones
 	@NotNull
 	@Valid

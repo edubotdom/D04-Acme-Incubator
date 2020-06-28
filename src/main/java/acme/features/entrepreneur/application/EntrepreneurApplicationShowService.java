@@ -50,7 +50,7 @@ public class EntrepreneurApplicationShowService implements AbstractShowService<E
 		String investor = entity.getInvestor().getUserAccount().getUsername();
 		model.setAttribute("investor", investor);
 
-		request.unbind(entity, model, "ticker", "creation", "statement", "offer");
+		request.unbind(entity, model, "ticker", "creation", "statement", "offer", "status");
 
 	}
 
