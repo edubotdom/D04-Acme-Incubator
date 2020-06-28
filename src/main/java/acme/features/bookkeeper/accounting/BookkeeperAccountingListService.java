@@ -42,7 +42,7 @@ public class BookkeeperAccountingListService implements AbstractListService<Book
 		assert request != null;
 
 		Collection<Accounting> result;
-		result = this.repository.findManyAccountsByRound(request.getModel().getInteger("id"));
+		result = this.repository.findManyAccountsByRound(request.getModel().getInteger("id"), request.getPrincipal().getAccountId());
 
 		return result;
 	}

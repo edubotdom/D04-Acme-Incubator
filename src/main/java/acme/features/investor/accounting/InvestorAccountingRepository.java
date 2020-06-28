@@ -31,7 +31,7 @@ public interface InvestorAccountingRepository extends AbstractRepository {
 	@Query("select j from Accounting j where j.id = ?1")
 	Accounting findOneAccountingById(int id);
 
-	@Query("select a from Accounting a where a.round.id=?1")
+	@Query("select a from Accounting a where a.round.id=?1 and a.status = 1")
 	Collection<Accounting> findManyAccountsByRound(int id);
 
 	@Query("select b from Bookkeeper b where b.userAccount.id= ?1")
