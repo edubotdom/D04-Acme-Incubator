@@ -9,14 +9,14 @@
 # they accept any liabilities with respect to them.
 
 
-administrator.card.form.label.holder = Card holder:
-administrator.card.form.label.number = Card number:
-administrator.card.form.label.brand = Card brand:
-administrator.card.form.label.cvv = CVV code:
+patron.card.form.label.holder = Card holder:
+patron.card.form.label.number = Card number:
+patron.card.form.label.brand = Card brand:
+patron.card.form.label.cvv = CVV code:
 
-administrator.card.form.button.create=Create
-administrator.card.form.button.update=Update
-administrator.card.form.button.delete = Delete
+patron.card.form.button.create=Create
+patron.card.form.button.update=Update
+patron.card.form.button.delete = Delete
 
-administrator.card.form.button.return=Return
+patron.card.form.button.return=Return
 

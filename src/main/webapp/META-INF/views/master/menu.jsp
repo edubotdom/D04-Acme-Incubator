@@ -59,9 +59,6 @@
 			<!-- Challenge links -->
 			<acme:menu-suboption code="master.menu.administrator.listChallenge" action="/administrator/challenge/list"/>
 			<acme:menu-suboption code="master.menu.administrator.createChallenge" action="/administrator/challenge/create"/>
-			<!-- Banner links -->
-			<acme:menu-suboption code="master.menu.administrator.listBanner" action="/administrator/banner/list"/>
-			<acme:menu-suboption code="master.menu.administrator.createBanner" action="/administrator/banner/create"/>
 
 
 			<acme:menu-separator/>
@@ -76,6 +73,13 @@
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
 	</acme:menu-left>
+
+		<acme:menu-option code="master.menu.patron" access="hasRole('Patron')">
+
+					<!-- Banner links -->
+			<acme:menu-suboption code="master.menu.patron.listBanner" action="/patron/banner/list"/>
+			<acme:menu-suboption code="master.menu.patron.createBanner" action="/patron/banner/create"/>
+		</acme:menu-option>		
 
 		<acme:menu-option code="master.menu.bookkeeper" access="hasRole('Bookkeeper')">
 			<!-- Investment rounds' links -->

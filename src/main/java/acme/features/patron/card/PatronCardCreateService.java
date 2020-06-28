@@ -1,35 +1,40 @@
 
-package acme.features.administrator.card;
+package acme.features.patron.card;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.banners.Banner;
 import acme.entities.cards.Card;
-import acme.features.administrator.banner.AdministratorBannerRepository;
+import acme.entities.roles.Patron;
+import acme.features.patron.banner.PatronBannerRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Administrator;
 import acme.framework.services.AbstractCreateService;
 
 @Service
-public class AdministratorCardCreateService implements AbstractCreateService<Administrator, Card> {
+public class PatronCardCreateService implements AbstractCreateService<Patron, Card> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	AdministratorCardRepository		repository;
+	PatronCardRepository	repository;
 
 	@Autowired
-	AdministratorBannerRepository	bannerRepository;
+	PatronBannerRepository	bannerRepository;
 
 
 	@Override
 	public boolean authorise(final Request<Card> request) {
 		assert request != null;
+		Integer bannerId = request.getModel().getInteger("id");
+		if (bannerId == null || bannerId.equals(0)) {
+			bannerId = request.getModel().getInteger("id_banner");
+		}
+		Banner banner = this.bannerRepository.findOneById(bannerId);
 
-		return true;
+		return banner.getPatron().getUserAccount().getId() == request.getPrincipal().getAccountId();
 	}
 
 	@Override

@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.administrator.banner;
+package acme.features.patron.card;
 
 import java.util.Collection;
 
@@ -18,14 +18,21 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.banners.Banner;
+import acme.entities.cards.Card;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
-public interface AdministratorBannerRepository extends AbstractRepository {
+public interface PatronCardRepository extends AbstractRepository {
 
-	@Query("select n from Banner n")
-	Collection<Banner> findMany();
+	@Query("select n from Card n")
+	Collection<Card> findMany();
+
+	@Query("select n from Card n where n.id = ?1")
+	Card findOneById(int id);
 
 	@Query("select n from Banner n where n.id = ?1")
-	Banner findOneById(int id);
+	Banner findOneBannerById(int id);
+
+	@Query("select n from Banner n where n.card.id = ?1")
+	Collection<Banner> findBannersByCard(int id);
 }

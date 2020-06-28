@@ -64,6 +64,7 @@
         `slogan` varchar(255),
         `url` varchar(255),
         `card_id` integer,
+        `patron_id` integer not null,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -347,6 +348,11 @@ create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
        add constraint `FKmlx88rwhns1ceiyilf11mre2l` 
        foreign key (`card_id`) 
        references `card` (`id`);
+
+    alter table `banner` 
+       add constraint `FKdocr1jjfgwx9ef5jbf675l360` 
+       foreign key (`patron_id`) 
+       references `patron` (`id`);
 
     alter table `bookkeeper` 
        add constraint FK_krvjp9eaqyapewl2igugbo9o8 

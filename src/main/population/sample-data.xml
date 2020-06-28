@@ -511,6 +511,7 @@
 		<property name="slogan" value="Banner 01" />
 		<property name="url" value="http://www.lsi.us.es/" />
 		<property name="card" ref="card01" />
+		<property name="patron" ref="patron1" />
 	</bean>
 
 	<!-- Activity' beans -->

@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.administrator.card;
+package acme.features.patron.card;
 
 import javax.annotation.PostConstruct;
 
@@ -19,27 +19,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import acme.entities.cards.Card;
+import acme.entities.roles.Patron;
 import acme.framework.components.BasicCommand;
 import acme.framework.controllers.AbstractController;
-import acme.framework.entities.Administrator;
 
 @Controller
-@RequestMapping("/administrator/card/")
-public class AdministratorCardController extends AbstractController<Administrator, Card> {
+@RequestMapping("/patron/card/")
+public class PatronCardController extends AbstractController<Patron, Card> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AdministratorCardShowService	showService;
+	private PatronCardShowService	showService;
 
 	@Autowired
-	private AdministratorCardCreateService	createService;
+	private PatronCardCreateService	createService;
 
 	@Autowired
-	private AdministratorCardUpdateService	updateService;
+	private PatronCardUpdateService	updateService;
 
 	@Autowired
-	private AdministratorCardDeleteService	deleteService;
+	private PatronCardDeleteService	deleteService;
 
 
 	// Constructors -----------------------------------------------------------

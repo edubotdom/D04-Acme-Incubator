@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
 
 import acme.entities.cards.Card;
+import acme.entities.roles.Patron;
 import acme.framework.entities.DomainEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,6 +33,10 @@ public class Banner extends DomainEntity {
 	@NotBlank
 	@URL
 	private String				url;
+
+	@Valid
+	@ManyToOne(optional = false)
+	private Patron				patron;
 
 	@Valid
 	@ManyToOne(optional = true)

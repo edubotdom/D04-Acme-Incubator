@@ -1,21 +1,23 @@
 
-package acme.features.administrator.banner;
+package acme.features.patron.banner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.banners.Banner;
+import acme.entities.roles.Patron;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Administrator;
-import acme.framework.services.AbstractDeleteService;
+import acme.framework.services.AbstractCreateService;
 
 @Service
-public class AdministratorBannerDeleteService implements AbstractDeleteService<Administrator, Banner> {
+public class PatronBannerCreateService implements AbstractCreateService<Patron, Banner> {
+
+	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	AdministratorBannerRepository repository;
+	PatronBannerRepository repository;
 
 
 	@Override
@@ -45,12 +47,14 @@ public class AdministratorBannerDeleteService implements AbstractDeleteService<A
 	}
 
 	@Override
-	public Banner findOne(final Request<Banner> request) {
-		assert request != null;
+	public Banner instantiate(final Request<Banner> request) {
 		Banner result;
-		int id;
-		id = request.getModel().getInteger("id");
-		result = this.repository.findOneById(id);
+		result = new Banner();
+
+		Integer idPatron = request.getPrincipal().getAccountId();
+		Patron patron = this.repository.findOnePatronById(idPatron);
+		result.setPatron(patron);
+
 		return result;
 	}
 
@@ -59,13 +63,14 @@ public class AdministratorBannerDeleteService implements AbstractDeleteService<A
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+
 	}
 
 	@Override
-	public void delete(final Request<Banner> request, final Banner entity) {
-		assert request != null;
-		assert entity != null;
-		this.repository.delete(entity);
+	public void create(final Request<Banner> request, final Banner entity) {
+
+		this.repository.save(entity);
+
 	}
 
 }
