@@ -41,6 +41,13 @@
 		<acme:form-double code="administrator.dashboard.form.label.standardDesviationMoneyOvertures" path="standardDesviationMoneyOvertures"/>
 	</acme:form-panel>
 	
+	<!-- Applications and investment rounds -->
+	<acme:form-panel code="administrator.dashboard.form.label.applicationsAndInvestmentRounds">
+		<acme:form-double code="administrator.dashboard.form.label.averageRoundsPerEntrepreneur" path="averageRoundsPerEntrepreneur"/>
+		<acme:form-double code="administrator.dashboard.form.label.averageApplicationsPerEntrepreneur" path="averageApplicationsPerEntrepreneur"/>
+		<acme:form-double code="administrator.dashboard.form.label.averageApplicationsPerInvestor" path="averageApplicationsPerInvestor"/>
+	</acme:form-panel>
+	
 	<!-- Listing indicators -->
 	<h2>
 		<acme:message code="administrator.dashboard.form.label.chart1"/>

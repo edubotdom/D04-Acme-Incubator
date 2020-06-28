@@ -39,7 +39,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 
 		request.unbind(entity, model, "totalNumberOfNotices", "totalNumberOfTechnologyRecords", "totalNumberOfToolRecords", "minimumMoneyInquiries", "maximumMoneyInquiries", "averageMoneyInquiries", "standardDesviationMoneyInquiries",
 			"minimumMoneyOvertures", "maximumMoneyOvertures", "averageMoneyOvertures", "standardDesviationMoneyOvertures", "technologySectors", "numberTechnologiesBySector", "toolSectors", "numberToolsBySector", "openSourceRatioTechnologies",
-			"closedSourceRatioTechnologies", "openSourceRatioTools", "closedSourceRatioTools");
+			"closedSourceRatioTechnologies", "openSourceRatioTools", "closedSourceRatioTools", "averageRoundsPerEntrepreneur", "averageApplicationsPerEntrepreneur", "averageApplicationsPerInvestor");
 	}
 
 	@Override
@@ -62,6 +62,10 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setMaximumMoneyOvertures(this.repository.maximumOverture());
 		result.setAverageMoneyOvertures(this.repository.averageOverture());
 		result.setStandardDesviationMoneyOvertures(this.repository.standardDesviationOverture());
+		//Applications and investment rounds
+		result.setAverageRoundsPerEntrepreneur(this.repository.getAverageRoundsPerEntrepreneur());
+		result.setAverageApplicationsPerEntrepreneur(this.repository.getAverageApplicationsPerEntrepreneur());
+		result.setAverageApplicationsPerInvestor(this.repository.getAverageApplicationsPerInvestor());
 
 		//		Chart's atts
 
