@@ -9,13 +9,16 @@
 # they accept any liabilities with respect to them.
 
 
-administrator.card.form.label.holder = Propietario:
-administrator.card.form.label.number = Número de tarjeta:
-administrator.card.form.label.brand = Entidad:
-administrator.card.form.label.cvv = Código CVV:
+patron.banner.form.button.return = Volver
+patron.banner.form.label.slogan=Eslogan
+patron.banner.form.label.picture=Imagen del anuncio
+patron.banner.form.label.url = Enlace
 
-administrator.card.form.button.create=Crear
-administrator.card.form.button.update=Actualizar
-administrator.card.form.button.delete = Eliminar
+patron.banner.form.button.createCC = Asociar tarjeta
+patron.banner.form.button.showCC = Mostrar tarjeta
 
-administrator.card.form.button.return=Volver
+patron.banner.form.button.create=Crear
+patron.banner.form.button.update=Actualizar
+patron.banner.form.button.delete = Eliminar
+
+patron.banner.list.label.slogan = Eslogan

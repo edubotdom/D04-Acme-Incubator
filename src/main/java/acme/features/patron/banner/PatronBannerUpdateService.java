@@ -1,30 +1,33 @@
 
-package acme.features.administrator.banner;
+package acme.features.patron.banner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.banners.Banner;
+import acme.entities.roles.Patron;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Administrator;
 import acme.framework.services.AbstractUpdateService;
 
 @Service
-public class AdministratorBannerUpdateService implements AbstractUpdateService<Administrator, Banner> {
+public class PatronBannerUpdateService implements AbstractUpdateService<Patron, Banner> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	AdministratorBannerRepository repository;
+	PatronBannerRepository repository;
 
 
 	@Override
 	public boolean authorise(final Request<Banner> request) {
 		assert request != null;
 
-		return true;
+		Integer bannerId = request.getModel().getInteger("id");
+		Banner banner = this.repository.findOneById(bannerId);
+
+		return banner.getPatron().getUserAccount().getId() == request.getPrincipal().getAccountId();
 	}
 
 	@Override

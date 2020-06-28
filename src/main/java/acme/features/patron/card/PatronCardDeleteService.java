@@ -1,32 +1,38 @@
 
-package acme.features.administrator.card;
+package acme.features.patron.card;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.banners.Banner;
 import acme.entities.cards.Card;
-import acme.features.administrator.banner.AdministratorBannerRepository;
+import acme.entities.roles.Patron;
+import acme.features.patron.banner.PatronBannerRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Administrator;
 import acme.framework.services.AbstractDeleteService;
 
 @Service
-public class AdministratorCardDeleteService implements AbstractDeleteService<Administrator, Card> {
+public class PatronCardDeleteService implements AbstractDeleteService<Patron, Card> {
 
 	@Autowired
-	AdministratorCardRepository		repository;
+	PatronCardRepository	repository;
 	@Autowired
-	AdministratorBannerRepository	bannerRepository;
+	PatronBannerRepository	bannerRepository;
 
 
 	@Override
 	public boolean authorise(final Request<Card> request) {
 		assert request != null;
 
-		return true;
+		int idCard = request.getModel().getInteger("id");
+		List<Banner> banners = new ArrayList<>(this.repository.findBannersByCard(idCard));
+
+		return banners.stream().map(b -> b.getPatron().getUserAccount().getId()).anyMatch(i -> i.equals(request.getPrincipal().getAccountId()));
 	}
 
 	@Override
@@ -70,11 +76,15 @@ public class AdministratorCardDeleteService implements AbstractDeleteService<Adm
 		assert request != null;
 		assert entity != null;
 
-		Banner banner = this.repository.findBannerByCard(entity.getId());
-		banner.setCard(null);
+		List<Banner> banners = new ArrayList<>(this.repository.findBannersByCard(entity.getId()));
 
-		this.bannerRepository.save(banner);
-		this.repository.delete(entity);
+		for (Banner b : banners) {
+			b.setCard(null);
+			this.bannerRepository.save(b);
+
+		}
+
+		//this.repository.delete(entity);
 	}
 
 }

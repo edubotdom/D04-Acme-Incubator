@@ -63,6 +63,13 @@ master.menu.administrator.createChallenge = Create a new challenge
 master.menu.administrator.createBanner = Create a new banner
 master.menu.administrator.listBanner = List banners
 
+# master.menu.patron ########################################################
+
+master.menu.patron = Patron
+master.menu.patron.createBanner = Create a new banner
+master.menu.patron.listBanner = List banners
+
+
 # master.menu.provider ########################################################
 
 master.menu.provider = Provider
