@@ -291,16 +291,28 @@
     ) engine=InnoDB;
 
     insert into `hibernate_sequence` values ( 1 );
+create index IDXfmpdf5k3txn94kwvoi2m1jge4 on `accounting` (`status`);
+create index IDX7w050mi7toy4boa363tvcxr2w on `activity` (`end`);
+create index IDX2q2747fhp099wkn3j2yt05fhs on `application` (`status`);
 
     alter table `application` 
        add constraint UK_ao7wxw7e7mkj6g5q49yq2fw8d unique (`ticker`);
+create index IDXorxhsdg7d67bolj0n57rc4o63 on `botia_bulletin` (`expiring_date`);
 create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
 
     alter table `forum` 
        add constraint UK_q57nllj3lbejasd0yhaujdocg unique (`round_id`);
+create index IDX9u3lu85o98y0tro95qasghg8e on `inquiry` (`deadline`);
+create index IDXrcpel5hblr62lfjr9gmpk2wgi on `notice` (`deadline`);
+create index IDX3ianip0mmnj1316lpeas2yw71 on `overture` (`deadline`);
+create index IDXpn2uodr1wcmonf4mb9juy7loh on `round` (`kind`);
 
     alter table `round` 
        add constraint UK_g4u8ufh14qv6lmr5mwiulyinh unique (`ticker`);
+create index IDXkn7kc8811iuqtxw6ahcnag70s on `technology` (`source`);
+create index IDXnnunvyk3xx97gklsi8juy05bg on `technology` (`sector`);
+create index IDXiv7jhqu4pq1w9h3v0xxggrkf7 on `tool` (`source`);
+create index IDXdr92l3mhgfgkeoplifnv5x2fp on `tool` (`sector`);
 
     alter table `user_account` 
        add constraint UK_castjbvpeeus0r8lbpehiu0e4 unique (`username`);
