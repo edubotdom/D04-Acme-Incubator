@@ -26,6 +26,30 @@
 		<acme:form-textarea code="investor.application.form.label.statement" path="statement"/>
 		<acme:form-money code="investor.application.form.label.offer" path="offer" />
 
+		<jstl:if test="${status=='accepted'}">
+		<acme:form-select code="investor.application.form.label.status" path="status" readonly="true">
+			<acme:form-option code="investor.application.form.label.status.accepted" value="accepted" selected="true"/>
+			<acme:form-option code="investor.application.form.label.status.rejected" value="rejected"/>
+			<acme:form-option code="investor.application.form.label.status.pending" value="pending"/>
+		</acme:form-select>
+		</jstl:if>
+
+		<jstl:if test="${status=='rejected'}">
+		<acme:form-select code="investor.application.form.label.status" path="status" readonly="true">
+			<acme:form-option code="investor.application.form.label.status.accepted" value="accepted"/>
+			<acme:form-option code="investor.application.form.label.status.rejected" value="rejected" selected="true"/>
+			<acme:form-option code="investor.application.form.label.status.pending" value="pending"/>
+		</acme:form-select>
+		</jstl:if>
+		
+		<jstl:if test="${status=='pending'}">
+		<acme:form-select code="investor.application.form.label.status" path="status" readonly="true">
+			<acme:form-option code="investor.application.form.label.status.accepted" value="accepted"/>
+			<acme:form-option code="investor.application.form.label.status.rejected" value="rejected"/>
+			<acme:form-option code="investor.application.form.label.status.pending" value="pending" selected="true"/>
+		</acme:form-select>
+		</jstl:if>
+
 	<acme:form-hidden path="direccionApplication"/>
 
 	<acme:form-submit test="${command == 'create'}" code="investor.application.form.button.create" action="${direccionApplication}" />

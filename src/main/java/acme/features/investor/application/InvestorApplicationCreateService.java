@@ -83,6 +83,8 @@ public class InvestorApplicationCreateService implements AbstractCreateService<I
 		Round round = this.roundRepository.findOneRoundById(roundId);
 		result.setRound(round);
 
+		result.setStatus("pending");
+
 		return result;
 	}
 

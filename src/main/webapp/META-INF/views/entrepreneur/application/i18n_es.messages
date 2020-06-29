@@ -18,5 +18,10 @@ entrepreneur.application.form.label.creation = Fecha de creación:
 entrepreneur.application.form.label.statement = Declaración:
 entrepreneur.application.form.label.offer = Oferta monetaria de inversión:
 entrepreneur.application.form.label.investor = Inversor:
+entrepreneur.application.form.label.status = Estado:
+
+entrepreneur.application.form.label.status.accepted= Aceptado
+entrepreneur.application.form.label.status.rejected = Rechazado
+entrepreneur.application.form.label.status.pending = Pendiente
 
 entrepreneur.application.form.button.return = Volver

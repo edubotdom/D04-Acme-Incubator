@@ -23,7 +23,30 @@
 		<acme:form-moment code="entrepreneur.application.form.label.creation" path="creation" readonly="true" />
 		<acme:form-textarea code="entrepreneur.application.form.label.statement" path="statement" readonly="true" />
 		<acme:form-money code="entrepreneur.application.form.label.offer" path="offer" />
+		
+		<jstl:if test="${status=='accepted'}">
+		<acme:form-select code="entrepreneur.application.form.label.status" path="status" readonly="true">
+			<acme:form-option code="entrepreneur.application.form.label.status.accepted" value="accepted" selected="true"/>
+			<acme:form-option code="entrepreneur.application.form.label.status.rejected" value="rejected"/>
+			<acme:form-option code="entrepreneur.application.form.label.status.pending" value="pending"/>
+		</acme:form-select>
+		</jstl:if>
 
+		<jstl:if test="${status=='rejected'}">
+		<acme:form-select code="entrepreneur.application.form.label.status" path="status" readonly="true">
+			<acme:form-option code="entrepreneur.application.form.label.status.accepted" value="accepted"/>
+			<acme:form-option code="entrepreneur.application.form.label.status.rejected" value="rejected" selected="true"/>
+			<acme:form-option code="entrepreneur.application.form.label.status.pending" value="pending"/>
+		</acme:form-select>
+		</jstl:if>
+		
+		<jstl:if test="${status=='pending'}">
+		<acme:form-select code="entrepreneur.application.form.label.status" path="status" readonly="true">
+			<acme:form-option code="entrepreneur.application.form.label.status.accepted" value="accepted"/>
+			<acme:form-option code="entrepreneur.application.form.label.status.rejected" value="rejected"/>
+			<acme:form-option code="entrepreneur.application.form.label.status.pending" value="pending" selected="true"/>
+		</acme:form-select>
+		</jstl:if>
 	<acme:form-return code="entrepreneur.application.form.button.return" />
 
 </acme:form>
