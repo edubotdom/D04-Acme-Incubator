@@ -30,7 +30,7 @@ public interface AuthenticatedForumRepository extends AbstractRepository {
 	@Query("select a from Authenticated a where a.userAccount.id = ?1")
 	Authenticated findOneAuthenticatedByUserAccountId(int id);
 
-	@Query("select t from Forum t where exists(select f from Forum f where f.round.entrepreneur.userAccount.id = ?1 and f.round.id = t.round.id) OR exists(select a from Application a where a.investor.userAccount.id = ?1 and a.round.id = t.round.id)")
+	@Query("select t from Forum t where exists(select f from Forum f where f.round.entrepreneur.userAccount.id = ?1 and f.round.id = t.round.id) OR exists(select a from Application a where a.status='accepted' and a.investor.userAccount.id = ?1 and a.round.id = t.round.id)")
 	Collection<Forum> findManyForumsByUserId(int id);
 
 }

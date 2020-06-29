@@ -424,7 +424,7 @@
 	<bean name="patron2" class="acme.entities.roles.Patron">
 		<property name="organisation" value="Firm 2" />
 		<property name="card" ref="card02" />
-		<property name="userAccount" ref="patron1UserAccount" />
+		<property name="userAccount" ref="patron2UserAccount" />
 	</bean>
 
 	<bean name="patron2Authenticated" class="acme.framework.entities.Authenticated">
