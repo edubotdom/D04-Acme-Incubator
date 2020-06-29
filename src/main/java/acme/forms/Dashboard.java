@@ -50,6 +50,17 @@ public class Dashboard implements Serializable {
 	Double						openSourceRatioTools;
 	Double						closedSourceRatioTools;
 
+	Double						ratioSeedInvestmentRounds;
+	Double						ratioAngelInvestmentRounds;
+	Double						ratioSeriesAInvestmentRounds;
+	Double						ratioSeriesBInvestmentRounds;
+	Double						ratioSeriesCInvestmentRounds;
+	Double						ratioBridgeInvestmentRounds;
+
+	Double						ratioAcceptedApplications;
+	Double						ratioRejectedApplications;
+	Double						ratioPendingApplications;
+
 	// Derived attributes ------------------------------------------------------
 
 	// Relationships -----------------------------------------------------------

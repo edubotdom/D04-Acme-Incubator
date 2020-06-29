@@ -48,6 +48,109 @@
 		<acme:form-double code="administrator.dashboard.form.label.averageApplicationsPerInvestor" path="averageApplicationsPerInvestor"/>
 	</acme:form-panel>
 	
+	<!-- Investment rounds by kind and applications per status ratios' charts -->
+	
+	<h2>
+		<acme:message code="administrator.dashboard.form.label.roundsByKindRatiosChart"/>
+	</h2>	
+	
+	<div>
+		<canvas id="roundsByKindRatiosChart"></canvas>
+	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var data = {
+				labels : ["Seed","Angel","Series A","Series B","Series C","Bridge"],
+				datasets : [
+					{
+						label: 'Rounds',
+						data : [
+							<jstl:out value="${ratioSeedInvestmentRounds}"/>,
+							<jstl:out value="${ratioAngelInvestmentRounds}"/>,
+							<jstl:out value="${ratioSeriesAInvestmentRounds}"/>,
+							<jstl:out value="${ratioSeriesBInvestmentRounds}"/>,
+							<jstl:out value="${ratioSeriesCInvestmentRounds}"/>,
+							<jstl:out value="${ratioBridgeInvestmentRounds}"/>,
+						],
+						backgroundColor : 'LightSkyBlue'
+						
+					},
+				]
+			};
+			var options = {
+				scales : {
+					yAxes : [
+						{
+							ticks : {
+								suggestedMin : 0.0,
+								suggestedMax : 1.0
+							}
+						}
+					]
+				}
+			};
+			var canvas,context;
+			canvas = document.getElementById("roundsByKindRatiosChart");
+			context = canvas.getContext("2d");
+			new Chart(context, {
+				type : "bar",
+				data : data,
+				options : options
+			});
+			
+		});
+	</script>
+	
+	<h2>
+		<acme:message code="administrator.dashboard.form.label.applicationsByStatusRatiosChart"/>
+	</h2>	
+	
+	<div>
+		<canvas id="applicationsByStatusRatiosChart"></canvas>
+	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var data = {
+				labels : ["Accepted","Rejected","Pending"],
+				datasets : [
+					{
+						label: 'Rounds',
+						data : [
+							<jstl:out value="${ratioAcceptedApplications}"/>,
+							<jstl:out value="${ratioRejectedApplications}"/>,
+							<jstl:out value="${ratioPendingApplications}"/>,
+						],
+						backgroundColor : 'LightSkyBlue'
+						
+					},
+				]
+			};
+			var options = {
+				scales : {
+					yAxes : [
+						{
+							ticks : {
+								suggestedMin : 0.0,
+								suggestedMax : 1.0
+							}
+						}
+					]
+				}
+			};
+			var canvas,context;
+			canvas = document.getElementById("applicationsByStatusRatiosChart");
+			context = canvas.getContext("2d");
+			new Chart(context, {
+				type : "bar",
+				data : data,
+				options : options
+			});
+			
+		});
+	</script>
+	
 	<!-- Listing indicators -->
 	<h2>
 		<acme:message code="administrator.dashboard.form.label.chart1"/>

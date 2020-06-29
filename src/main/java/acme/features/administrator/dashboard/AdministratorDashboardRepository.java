@@ -85,4 +85,32 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 
 	@Query("select avg(select count(a) from Application a where a.investor.id = i.id) from Investor i")
 	Double getAverageApplicationsPerInvestor();
+
+	@Query("select 1.0 * count(a) / (select count(b) from Application b) from Application a where a.status = 'pending'")
+	Double ratioPendingApplications();
+
+	@Query("select 1.0 * count(a) / (select count(b) from Application b) from Application a where a.status = 'accepted'")
+	Double ratioAcceptedApplications();
+
+	@Query("select 1.0 * count(a) / (select count(b) from Application b) from Application a where a.status = 'rejected'")
+	Double ratioRejectedApplications();
+
+	@Query("select 1.0 * count(a) / (select count(b) from Round b) from Round a where a.kind = 'SEED'")
+	Double ratioSeedInvestmentRounds();
+
+	@Query("select 1.0 * count(a) / (select count(b) from Round b) from Round a where a.kind = 'ANGEL'")
+	Double ratioAngelInvestmentRounds();
+
+	@Query("select 1.0 * count(a) / (select count(b) from Round b) from Round a where a.kind = 'SERIES-A'")
+	Double ratioSeriesAInvestmentRounds();
+
+	@Query("select 1.0 * count(a) / (select count(b) from Round b) from Round a where a.kind = 'SERIES-B'")
+	Double ratioSeriesBInvestmentRounds();
+
+	@Query("select 1.0 * count(a) / (select count(b) from Round b) from Round a where a.kind = 'SERIES-C'")
+	Double ratioSeriesCInvestmentRounds();
+
+	@Query("select 1.0 * count(a) / (select count(b) from Round b) from Round a where a.kind = 'BRIDGE'")
+	Double ratioBridgeInvestmentRounds();
+
 }

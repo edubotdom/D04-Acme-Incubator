@@ -39,7 +39,8 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 
 		request.unbind(entity, model, "totalNumberOfNotices", "totalNumberOfTechnologyRecords", "totalNumberOfToolRecords", "minimumMoneyInquiries", "maximumMoneyInquiries", "averageMoneyInquiries", "standardDesviationMoneyInquiries",
 			"minimumMoneyOvertures", "maximumMoneyOvertures", "averageMoneyOvertures", "standardDesviationMoneyOvertures", "technologySectors", "numberTechnologiesBySector", "toolSectors", "numberToolsBySector", "openSourceRatioTechnologies",
-			"closedSourceRatioTechnologies", "openSourceRatioTools", "closedSourceRatioTools", "averageRoundsPerEntrepreneur", "averageApplicationsPerEntrepreneur", "averageApplicationsPerInvestor");
+			"closedSourceRatioTechnologies", "openSourceRatioTools", "closedSourceRatioTools", "averageRoundsPerEntrepreneur", "averageApplicationsPerEntrepreneur", "averageApplicationsPerInvestor", "ratioSeedInvestmentRounds",
+			"ratioAngelInvestmentRounds", "ratioSeriesAInvestmentRounds", "ratioSeriesBInvestmentRounds", "ratioSeriesCInvestmentRounds", "ratioBridgeInvestmentRounds", "ratioAcceptedApplications", "ratioRejectedApplications", "ratioPendingApplications");
 	}
 
 	@Override
@@ -100,6 +101,19 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 
 		result.setOpenSourceRatioTools(this.repository.openSourceRatioToolsRatio());
 		result.setClosedSourceRatioTools(this.repository.closedSourceRatioToolsRatio());
+
+		//Investment rounds' kinds and applications' status ratios
+
+		result.setRatioSeedInvestmentRounds(this.repository.ratioSeedInvestmentRounds());
+		result.setRatioAngelInvestmentRounds(this.repository.ratioAngelInvestmentRounds());
+		result.setRatioSeriesAInvestmentRounds(this.repository.ratioSeriesAInvestmentRounds());
+		result.setRatioSeriesBInvestmentRounds(this.repository.ratioSeriesBInvestmentRounds());
+		result.setRatioSeriesCInvestmentRounds(this.repository.ratioSeriesCInvestmentRounds());
+		result.setRatioBridgeInvestmentRounds(this.repository.ratioBridgeInvestmentRounds());
+
+		result.setRatioAcceptedApplications(this.repository.ratioAcceptedApplications());
+		result.setRatioRejectedApplications(this.repository.ratioRejectedApplications());
+		result.setRatioPendingApplications(this.repository.ratioPendingApplications());
 
 		return result;
 	}
